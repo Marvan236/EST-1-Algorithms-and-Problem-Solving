@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 36: The Power Sum
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #36: The Power Sum
+MODULE: Unit 3: Programming Basics
+TOPIC: Recursion & Dynamic Programming (Subset Powers)
 URL: https://www.hackerrank.com/challenges/the-power-sum/problem
-DOMAIN / DIFFICULTY: Recursion | Medium
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Recursion | Medium
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Find the number of ways that a given integer, $X$, can be expressed as the sum of the $N^{th}$ powers of unique, natural numbers. 
@@ -89,17 +94,33 @@ This is the only way in which 10 can be expressed as the sum of unique squares.
 100 can be expressed as the sum of the cubes of 1,2,3,4 .   
 (1+8+27+64=100) . There is no other way to express 100 as the sum of cubes.
 
-====================================================================
---- SOLUTION ---
-x = int(input())
-exponent = int(input())
-ways = [0] * (x + 1)
-ways[0] = 1
-base = 1
-while base ** exponent <= x:
-    power = base ** exponent
-    for total in range(x, power - 1, -1):
-        ways[total] += ways[total - power]
-    base += 1
-print(ways[x])
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Model as 0/1 knapsack where each base value b^N can be used at most once to sum to X. Update DP array backwards.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(X * X^(1/N))
+- Space Complexity: O(X)
+
+SOURCE CODE:
+def main():
+    x = int(input().strip())
+    n = int(input().strip())
+
+    # dp[s] stores the number of unique subset combinations summing to s
+    dp = [0] * (x + 1)
+    dp[0] = 1
+
+    base = 1
+    while base ** n <= x:
+        power_val = base ** n
+        for s in range(x, power_val - 1, -1):
+            dp[s] += dp[s - power_val]
+        base += 1
+
+    print(dp[x])
+
+if __name__ == '__main__':
+    main()
+================================================================================

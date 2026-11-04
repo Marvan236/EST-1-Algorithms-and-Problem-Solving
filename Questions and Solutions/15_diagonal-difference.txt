@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 15: Diagonal Difference
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #15: Diagonal Difference
+MODULE: Unit 3: Programming Basics
+TOPIC: 2-D Arrays (Matrix Diagonals)
 URL: https://www.hackerrank.com/challenges/diagonal-difference/problem
-DOMAIN / DIFFICULTY: Warmup | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Warmup | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Given a square matrix, calculate the absolute difference between the sums of its diagonals.  
@@ -80,9 +85,29 @@ Difference: ∣4−19∣=15
 
 **Note:** |x| is the [absolute value](https://www.mathsisfun.com/numbers/absolute-value.html) of x.
 
-====================================================================
---- SOLUTION ---
-n = int(input())
-a = [list(map(int, input().split())) for _ in range(n)]
-print(abs(sum(a[i][i] - a[i][n-1-i] for i in range(n))))
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Compute primary diagonal sum (i == j) and secondary diagonal sum (j == n - 1 - i) across an n x n square matrix in a single pass, returning |primary - secondary|.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N)
+- Space Complexity: O(1) auxiliary
+
+SOURCE CODE:
+def main():
+    n = int(input().strip())
+    grid = [list(map(int, input().split())) for _ in range(n)]
+
+    primary_sum = 0
+    secondary_sum = 0
+
+    for i in range(n):
+        primary_sum += grid[i][i]
+        secondary_sum += grid[i][n - 1 - i]
+
+    print(abs(primary_sum - secondary_sum))
+
+if __name__ == '__main__':
+    main()
+================================================================================

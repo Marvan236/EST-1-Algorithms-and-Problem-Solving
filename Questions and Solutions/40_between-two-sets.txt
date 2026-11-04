@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 40: Between Two Sets
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #40: Between Two Sets
+MODULE: Units 4 & 5: Problems on Maths
+TOPIC: GCD & LCM (Factors and Multiples)
 URL: https://www.hackerrank.com/challenges/between-two-sets/problem
-DOMAIN / DIFFICULTY: Implementation | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Implementation | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 There will be two arrays of integers.  Determine all integers that satisfy the following two conditions:  
@@ -68,21 +73,46 @@ The third line contains $m$ distinct space-separated integers $b[j]$ where $0 \l
 
 4, 8 and 16 are the only three numbers for which each element of a is a factor and each is a factor of all elements of b.
 
-====================================================================
---- SOLUTION ---
-from math import gcd, isqrt
-n, m = map(int, input().split())
-a = list(map(int, input().split()))
-b = list(map(int, input().split()))
-multiple = 1
-for x in a:
-    multiple = multiple // gcd(multiple, x) * x
-divisor = 0
-for x in b:
-    divisor = gcd(divisor, x)
-if divisor % multiple:
-    print(0)
-else:
-    ratio = divisor // multiple
-    print(sum(1 if d*d == ratio else 2 for d in range(1, isqrt(ratio)+1) if ratio % d == 0))
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Candidate numbers must be multiples of lcm(A) and factors of gcd(B). Iterate through multiples of lcm(A) up to gcd(B) and count valid candidates.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N log(max A) + M log(max B) + (gcd(B)/lcm(A)))
+- Space Complexity: O(1) auxiliary
+
+SOURCE CODE:
+from math import gcd
+
+def lcm(x, y):
+    return (x * y) // gcd(x, y)
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    # LCM of all elements in A
+    lcm_a = a[0]
+    for val in a[1:]:
+        lcm_a = lcm(lcm_a, val)
+
+    # GCD of all elements in B
+    gcd_b = b[0]
+    for val in b[1:]:
+        gcd_b = gcd(gcd_b, val)
+
+    # Count multiples of lcm_a that divide gcd_b
+    count = 0
+    multiple = lcm_a
+    while multiple <= gcd_b:
+        if gcd_b % multiple == 0:
+            count += 1
+        multiple += lcm_a
+
+    print(count)
+
+if __name__ == '__main__':
+    main()
+================================================================================

@@ -1,4 +1,32 @@
-# Publish only the requested text collection and its index.
+# Exclude screenshots (do not include existing screenshots)
+*.png
+*.jpg
+*.jpeg
+*.gif
+HACKERANK SCREENSHOTS/
+*.docx
+
+# Exclude sensitive credentials and authentication tokens
+hackerrank_auth.json
+hackerrank_real_cookies.json
+*.env
+*.pem
+*.key
+
+# Exclude system and cache directories
+.DS_Store
+__pycache__/
+*.py[cod]
+.hackerrank-cache/
+scratch/
+*.swp
+*~
+
+# Generator helper scripts
+rephrase_collection.py
+build_readme.py
+
+# Whitelist tracked files:
 /*
 !/.gitignore
 !/README.md

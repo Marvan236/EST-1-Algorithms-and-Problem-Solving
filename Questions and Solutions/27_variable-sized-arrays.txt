@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 27: Variable Sized Arrays
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #27: Variable Sized Arrays
+MODULE: Unit 3: Programming Basics
+TOPIC: Dynamic Arrays (Jagged 2D Vectors)
 URL: https://www.hackerrank.com/challenges/variable-sized-arrays/problem
-DOMAIN / DIFFICULTY: Introduction | Easy
-LANGUAGE: C++14
-====================================================================
+DOMAIN / DIFFICULTY: C++ / Introduction | Easy
+PROGRAMMING LANGUAGE: C++14
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Consider an $n$-element array, $a$, where each index $i$ in the array contains a reference to an array of $k_i$ integers (where the value of $k_i$ varies from array to array). See the *Explanation* section below for a diagram.
@@ -62,18 +67,44 @@ We perform the following q=2 queries:
   1. Find the array located at index i=0 , which corresponds to a[0]=[1,5,4] . We must print the value at index j=1 of this array which, as you can see, is 5 .
   2. Find the array located at index i=1 , which corresponds to a[1]=[1,2,8,9,3] . We must print the value at index j=3 of this array which, as you can see, is 9 .
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Store variable-length arrays inside a vector of vectors (std::vector<vector<int>>), servicing random-access index queries in O(1).
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(Total Elements + Q)
+- Space Complexity: O(Total Elements)
+
+SOURCE CODE:
 #include <iostream>
 #include <vector>
+
 using namespace std;
+
 int main() {
-    ios::sync_with_stdio(false); cin.tie(nullptr);
-    int n, q; cin >> n >> q; vector<vector<int>> a(n);
-    for (auto &row : a) {
-        int k; cin >> k; row.resize(k);
-        for (int &x : row) cin >> x;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n, q;
+    if (!(cin >> n >> q)) return 0;
+
+    vector<vector<int>> arr(n);
+    for (int i = 0; i < n; ++i) {
+        int k;
+        cin >> k;
+        arr[i].resize(k);
+        for (int j = 0; j < k; ++j) {
+            cin >> arr[i][j];
+        }
     }
-    while (q--) { int i, j; cin >> i >> j; cout << a[i][j] << '\n'; }
+
+    for (int query = 0; query < q; ++query) {
+        int i, j;
+        cin >> i >> j;
+        cout << arr[i][j] << '\n';
+    }
+
+    return 0;
 }
-====================================================================
+================================================================================

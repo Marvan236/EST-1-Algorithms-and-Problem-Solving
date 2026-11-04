@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 03: Input and Output
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #03: Input and Output
+MODULE: Unit 3: Programming Basics
+TOPIC: Input / Output Streams
 URL: https://www.hackerrank.com/challenges/cpp-input-and-output/problem
-DOMAIN / DIFFICULTY: Introduction | Easy
-LANGUAGE: C++14
-====================================================================
+DOMAIN / DIFFICULTY: C++ / Introduction | Easy
+PROGRAMMING LANGUAGE: C++14
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 **Objective**		
@@ -66,8 +71,30 @@ Print the sum of the three numbers on a single line.
 
 The sum of the three numbers is 1+2+7=10 .
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Read three space-delimited integer tokens from standard input (cin), compute their cumulative sum, and emit the result to standard output (cout).
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(1)
+- Space Complexity: O(1)
+
+SOURCE CODE:
 #include <iostream>
-int main() { int a, b, c; std::cin >> a >> b >> c; std::cout << a+b+c << '\n'; }
-====================================================================
+
+using namespace std;
+
+int main() {
+    // Optimize standard I/O operations
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int a, b, c;
+    if (cin >> a >> b >> c) {
+        cout << (a + b + c) << '\n';
+    }
+
+    return 0;
+}
+================================================================================

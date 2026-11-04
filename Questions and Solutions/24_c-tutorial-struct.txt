@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 24: Structs
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #24: Structs
+MODULE: Unit 3: Programming Basics
+TOPIC: Structures (Composite Records)
 URL: https://www.hackerrank.com/challenges/c-tutorial-struct/problem
-DOMAIN / DIFFICULTY: Classes | Easy
-LANGUAGE: C++14
-====================================================================
+DOMAIN / DIFFICULTY: C++ / Introduction | Easy
+PROGRAMMING LANGUAGE: C++14
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 _struct_ is a way to combine multiple fields to represent a composite data structure, which further lays the foundation for Object Oriented Programming. For example, we can store details related to a student in a struct consisting of his _age (int), first\_name (string), last\_name (string) and standard (int)_.  
@@ -52,14 +57,37 @@ Output will be of a single line, consisting of _age_, _first\_name_, _last\_name
     
     15 john carmack 10
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Declare a Student structure with age, first_name, last_name, and standard, reading values and printing formatted output.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(1)
+- Space Complexity: O(1)
+
+SOURCE CODE:
 #include <iostream>
 #include <string>
+
 using namespace std;
-struct Student { int age; string first_name, last_name; int standard; };
+
+struct Student {
+    int age;
+    string first_name;
+    string last_name;
+    int standard;
+};
+
 int main() {
-    Student s; cin >> s.age >> s.first_name >> s.last_name >> s.standard;
-    cout << s.age << ' ' << s.first_name << ' ' << s.last_name << ' ' << s.standard << '\n';
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    Student s;
+    if (cin >> s.age >> s.first_name >> s.last_name >> s.standard) {
+        cout << s.age << " " << s.first_name << " " << s.last_name << " " << s.standard << '\n';
+    }
+
+    return 0;
 }
-====================================================================
+================================================================================

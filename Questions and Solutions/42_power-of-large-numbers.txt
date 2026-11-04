@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 42: Power of large numbers
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #42: Power of large numbers
+MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Modular Arithmetic (Euler's Totient / Fermat)
 URL: https://www.hackerrank.com/challenges/power-of-large-numbers/problem
-DOMAIN / DIFFICULTY: Number Theory | Medium
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Mathematics / Number Theory | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 The city of Hackerland has formed a new football club and wants to participate in the upcoming Football League of their country. The coach is worried that they will not be able to qualify because they don't have a famous footballer in their team. The assistant coach suggests that the team should buy Cristiano Ronaldo as he can single-handedly get their team qualified.  
@@ -54,17 +59,41 @@ Similarly 4^(5) modulo (10^(9) + 7) = 1024
 Similarly 7^(4) modulo (10^(9) + 7) = 2401  
 Similarly we can do for others.
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Compute A^B mod M where M = 10^9 + 7 is prime. By Fermat's Little Theorem, A^B mod M = (A mod M)^(B mod (M - 1)) mod M.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(|A| + |B| + log MOD)
+- Space Complexity: O(1)
+
+SOURCE CODE:
+import sys
+
 MOD = 1000000007
 
-def decimal_mod(digits, modulus):
-    value = 0
-    for digit in digits:
-        value = (value * 10 + ord(digit) - ord('0')) % modulus
-    return value
+def str_mod(digits: str, modulus: int) -> int:
+    val = 0
+    for ch in digits:
+        val = (val * 10 + ord(ch) - 48) % modulus
+    return val
 
-for _ in range(int(input())):
-    a, b = input().split()
-    print(pow(decimal_mod(a, MOD), decimal_mod(b, MOD - 1), MOD))
-====================================================================
+def main():
+    tokens = sys.stdin.read().split()
+    if not tokens:
+        return
+    t = int(tokens[0])
+    idx = 1
+    out = []
+    for _ in range(t):
+        a_str, b_str = tokens[idx], tokens[idx+1]
+        idx += 2
+        base = str_mod(a_str, MOD)
+        exp = str_mod(b_str, MOD - 1)
+        out.append(str(pow(base, exp, MOD)))
+    sys.stdout.write('\n'.join(out) + '\n')
+
+if __name__ == '__main__':
+    main()
+================================================================================

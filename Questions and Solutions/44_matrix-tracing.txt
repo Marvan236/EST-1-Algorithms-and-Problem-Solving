@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 44: Matrix Tracing
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #44: Matrix Tracing
+MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Permutations & Combinations (Grid Path Combinatorics)
 URL: https://www.hackerrank.com/challenges/matrix-tracing/problem
-DOMAIN / DIFFICULTY: Fundamentals | Hard
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Mathematics / Combinatorics | Medium
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 A word from the English dictionary is taken and arranged as a matrix. e.g. "MATHEMATICS"
@@ -63,21 +68,50 @@ Hence the answer is 3.
 **Timelimit**
 Time limit for this challenge is given [here](https://www.hackerrank.com/environment)
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Any path from top-left to bottom-right of an m x n grid consists of (m-1) down steps and (n-1) right steps. Total paths is C((m-1)+(n-1), m-1) mod (10^9 + 7). Precompute factorials and modular inverse factorials.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(M_max + N_max) precomputation, O(1) per query
+- Space Complexity: O(M_max + N_max)
+
+SOURCE CODE:
 import sys
 from array import array
+
 MOD = 1000000007
-data = list(map(int, sys.stdin.buffer.read().split()))
-cases = list(zip(data[1::2], data[2::2]))
-limit = max(m + n - 2 for m, n in cases)
-factorial = array('I', [1]) * (limit + 1)
-inverse = array('I', [1]) * (limit + 1)
-for i in range(1, limit + 1):
-    factorial[i] = factorial[i-1] * i % MOD
-inverse[limit] = pow(factorial[limit], MOD-2, MOD)
-for i in range(limit, 0, -1):
-    inverse[i-1] = inverse[i] * i % MOD
-for m, n in cases:
-    print(factorial[m+n-2] * inverse[m-1] % MOD * inverse[n-1] % MOD)
-====================================================================
+
+def main():
+    data = list(map(int, sys.stdin.buffer.read().split()))
+    if not data:
+        return
+    t = data[0]
+    pairs = list(zip(data[1::2], data[2::2]))
+
+    # Determine maximum dimension for factorial table
+    max_k = max(m + n - 2 for m, n in pairs)
+
+    fact = array('q', [1]) * (max_k + 1)
+    for i in range(1, max_k + 1):
+        fact[i] = (fact[i - 1] * i) % MOD
+
+    inv_fact = array('q', [1]) * (max_k + 1)
+    inv_fact[max_k] = pow(fact[max_k], MOD - 2, MOD)
+    for i in range(max_k - 1, -1, -1):
+        inv_fact[i] = (inv_fact[i + 1] * (i + 1)) % MOD
+
+    out = []
+    for m, n in pairs:
+        total_steps = m + n - 2
+        down_steps = m - 1
+        ans = (fact[total_steps] * inv_fact[down_steps]) % MOD
+        ans = (ans * inv_fact[total_steps - down_steps]) % MOD
+        out.append(str(ans))
+
+    sys.stdout.write('\n'.join(out) + '\n')
+
+if __name__ == '__main__':
+    main()
+================================================================================

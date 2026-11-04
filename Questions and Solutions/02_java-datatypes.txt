@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 02: Java Datatypes
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #02: Java Datatypes
+MODULE: Unit 3: Programming Basics
+TOPIC: Data Types & Numerical Bit Widths
 URL: https://www.hackerrank.com/challenges/java-datatypes/problem
-DOMAIN / DIFFICULTY: Introduction | Easy
-LANGUAGE: Java 8
-====================================================================
+DOMAIN / DIFFICULTY: Java / Introduction | Easy
+PROGRAMMING LANGUAGE: Java 8
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Java has 8 primitive data types; *char, boolean, byte, short, int, long, float, and double*. For this exercise, we'll work with the primitives used to hold integer values (*byte, short, int,* and *long*):
@@ -72,28 +77,54 @@ If the number cannot be stored in one of the four aforementioned primitives, pri
 
 213333333333333333333333333333333333 is very large and is outside of the allowable range of values for the primitive data types discussed in this problem.
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Determine which primitive signed integer types (byte, short, int, long) can fit an arbitrarily large integer input using BigInteger bit bounds (-2^(k-1) to 2^(k-1) - 1).
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(T)
+- Space Complexity: O(1) auxiliary
+
+SOURCE CODE:
 import java.math.BigInteger;
 import java.util.Scanner;
+
 public class Solution {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int t = in.nextInt();
-        int[] bits = {8, 16, 32, 64};
-        String[] names = {"byte", "short", "int", "long"};
+        Scanner scanner = new Scanner(System.in);
+        if (!scanner.hasNextInt()) return;
+        int t = scanner.nextInt();
+
+        // Bit widths and corresponding type names
+        int[] bitWidths = {8, 16, 32, 64};
+        String[] typeNames = {"byte", "short", "int", "long"};
+
         while (t-- > 0) {
-            String token = in.next();
-            BigInteger n = new BigInteger(token);
-            StringBuilder types = new StringBuilder();
-            for (int i = 0; i < bits.length; ++i) {
-                BigInteger bound = BigInteger.ONE.shiftLeft(bits[i] - 1);
-                if (n.compareTo(bound.negate()) >= 0 && n.compareTo(bound) < 0)
-                    types.append("* ").append(names[i]).append('\n');
+            String token = scanner.next();
+            try {
+                BigInteger n = new BigInteger(token);
+                StringBuilder fittingTypes = new StringBuilder();
+
+                for (int i = 0; i < bitWidths.length; i++) {
+                    BigInteger maxBound = BigInteger.ONE.shiftLeft(bitWidths[i] - 1);
+                    BigInteger minBound = maxBound.negate();
+                    // Signed range check: [-2^(k-1), 2^(k-1) - 1]
+                    if (n.compareTo(minBound) >= 0 && n.compareTo(maxBound) < 0) {
+                        fittingTypes.append("* ").append(typeNames[i]).append("\n");
+                    }
+                }
+
+                if (fittingTypes.length() == 0) {
+                    System.out.println(token + " can't be fitted anywhere.");
+                } else {
+                    System.out.print(token + " can be fitted in:\n" + fittingTypes);
+                }
+            } catch (Exception e) {
+                System.out.println(token + " can't be fitted anywhere.");
             }
-            if (types.length() == 0) System.out.println(token + " can't be fitted anywhere.");
-            else System.out.print(token + " can be fitted in:\n" + types);
         }
+        scanner.close();
     }
 }
-====================================================================
+================================================================================

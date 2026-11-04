@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 23: Write a function
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #23: Write a function
+MODULE: Unit 3: Programming Basics
+TOPIC: Functions (Leap Year Evaluation Logic)
 URL: https://www.hackerrank.com/challenges/write-a-function/problem
-DOMAIN / DIFFICULTY: Introduction | Medium
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Python / Introduction | Medium
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 An extra day is added to the calendar almost every four years as February 29, and the day is called a *leap day*.  It corrects the calendar for the fact that our planet takes approximately 365.25 days to orbit the sun.  A leap year contains a leap day.
@@ -50,11 +55,21 @@ The function must return a Boolean value (True/False).  Output is handled by the
 
 1990 is not a multiple of 4 hence it's not a leap year.
 
-====================================================================
---- SOLUTION ---
-def is_leap(year):
-    return year % 400 == 0 or (year % 4 == 0 and year % 100 != 0)
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Implement a leap year function: a year is a leap year if divisible by 400, or divisible by 4 and not divisible by 100.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(1)
+- Space Complexity: O(1)
+
+SOURCE CODE:
+def is_leap(year: int) -> bool:
+    """Return True if year is a leap year, False otherwise."""
+    return (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0)
 
 if __name__ == '__main__':
-    print(is_leap(int(input())))
-====================================================================
+    year = int(input().strip())
+    print(is_leap(year))
+================================================================================

@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 21: Pointers in C
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #21: Pointers in C
+MODULE: Unit 3: Programming Basics
+TOPIC: Pointers (Memory Addresses & Dereferencing)
 URL: https://www.hackerrank.com/challenges/pointer-in-c/problem
-DOMAIN / DIFFICULTY: Introduction | Easy
-LANGUAGE: C
-====================================================================
+DOMAIN / DIFFICULTY: C / Introduction | Easy
+PROGRAMMING LANGUAGE: C
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 **Objective**
@@ -64,16 +69,32 @@ Note: Input/ouput will be automatically handled. You only have to complete the f
   * a^(′)=4+5=9 
   * b^(′)=∣4−5∣=1
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Use C pointers to simultaneously compute the sum and absolute difference of two integer variables.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(1)
+- Space Complexity: O(1)
+
+SOURCE CODE:
 #include <stdio.h>
 #include <stdlib.h>
+
 void update(int *a, int *b) {
-    int sum = *a + *b, difference = abs(*a - *b);
-    *a = sum; *b = difference;
+    int sum = *a + *b;
+    int diff = abs(*a - *b);
+    *a = sum;
+    *b = diff;
 }
-int main(void) {
-    int a, b; scanf("%d%d", &a, &b); update(&a, &b);
-    printf("%d\n%d\n", a, b); return 0;
+
+int main() {
+    int a, b;
+    if (scanf("%d %d", &a, &b) == 2) {
+        update(&a, &b);
+        printf("%d\n%d\n", a, b);
+    }
+    return 0;
 }
-====================================================================
+================================================================================

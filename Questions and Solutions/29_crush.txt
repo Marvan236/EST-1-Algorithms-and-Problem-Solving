@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 29: Array Manipulation
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #29: Array Manipulation
+MODULE: Unit 3: Programming Basics
+TOPIC: Pre-computation / Prefix Sums (Difference Array)
 URL: https://www.hackerrank.com/challenges/crush/problem
-DOMAIN / DIFFICULTY: Arrays | Hard
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Data Structures / Arrays | Hard
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Starting with a 1-indexed array of zeros and a list of operations, for each operation add a value to each array element between two given indices, inclusive.  Once all operations have been performed, return the maximum value in the array.  
@@ -79,19 +84,46 @@ After the third update list is `100 200 200 200 100`.
 
 The maximum value is 200 .
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Apply range additions using the difference array prefix technique: for query [a, b, k], add +k to diff[a] and -k to diff[b+1]. A single prefix-sum sweep identifies the maximum value.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N + M)
+- Space Complexity: O(N)
+
+SOURCE CODE:
 import sys
 from array import array
-n, m = map(int, sys.stdin.buffer.readline().split())
-delta = array('q', [0]) * (n + 2)
-for _ in range(m):
-    a, b, k = map(int, sys.stdin.buffer.readline().split())
-    delta[a] += k
-    delta[b + 1] -= k
-current = best = 0
-for i in range(1, n + 1):
-    current += delta[i]
-    best = max(best, current)
-print(best)
-====================================================================
+
+def main():
+    lines = sys.stdin.buffer.read().split()
+    if not lines:
+        return
+    it = iter(lines)
+    n = int(next(it))
+    m = int(next(it))
+
+    # Difference array with 1-based indexing and buffer boundary
+    diff = array('q', [0]) * (n + 2)
+
+    for _ in range(m):
+        a = int(next(it))
+        b = int(next(it))
+        k = int(next(it))
+        diff[a] += k
+        diff[b + 1] -= k
+
+    max_val = 0
+    current_val = 0
+    for i in range(1, n + 1):
+        current_val += diff[i]
+        if current_val > max_val:
+            max_val = current_val
+
+    sys.stdout.write(f"{max_val}\n")
+
+if __name__ == '__main__':
+    main()
+================================================================================

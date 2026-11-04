@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 09: Loops
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #09: Loops
+MODULE: Unit 3: Programming Basics
+TOPIC: Loops & Iteration
 URL: https://www.hackerrank.com/challenges/python-loops/problem
-DOMAIN / DIFFICULTY: Introduction | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Python / Introduction | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 _(Check [Tutorial](https://www.hackerrank.com/challenges/python-loops/tutorial) tab to know how to to solve.)  
@@ -49,8 +54,21 @@ Print $n$ lines, one corresponding to each $i$.
     9
     16
 
-====================================================================
---- SOLUTION ---
-for i in range(int(input())):
-    print(i * i)
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Iterate through all non-negative integers i < N and print the square of each integer.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N)
+- Space Complexity: O(1)
+
+SOURCE CODE:
+def main():
+    n = int(input().strip())
+    for i in range(n):
+        print(i * i)
+
+if __name__ == '__main__':
+    main()
+================================================================================

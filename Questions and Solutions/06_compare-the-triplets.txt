@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 06: Compare the Triplets
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #06: Compare the Triplets
+MODULE: Unit 3: Programming Basics
+TOPIC: Operators & Comparison
 URL: https://www.hackerrank.com/challenges/compare-the-triplets/problem
-DOMAIN / DIFFICULTY: Warmup | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Warmup | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding points on a scale from 1 to 100 for three categories: problem clarity, originality, and difficulty. 
@@ -118,9 +123,27 @@ Comparing the 0^(th) elements, 17<99 so Bob receives a point.
 Comparing the 1^(st) and 2^(nd) elements, 28>16 and 30>8 so Alice receives two points.   
 The return array is [2,1] .
 
-====================================================================
---- SOLUTION ---
-a = list(map(int, input().split()))
-b = list(map(int, input().split()))
-print(sum(x > y for x, y in zip(a, b)), sum(x < y for x, y in zip(a, b)))
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Compare corresponding ratings in two triplets. A point is awarded to Alice if a[i] > b[i], and to Bob if a[i] < b[i].
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(1)
+- Space Complexity: O(1)
+
+SOURCE CODE:
+def main():
+    # Read Alice's and Bob's ratings
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    # Calculate scores based on pairwise comparison
+    alice_score = sum(x > y for x, y in zip(a, b))
+    bob_score = sum(x < y for x, y in zip(a, b))
+
+    print(alice_score, bob_score)
+
+if __name__ == '__main__':
+    main()
+================================================================================

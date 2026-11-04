@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 10: For Loop
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #10: For Loop
+MODULE: Unit 3: Programming Basics
+TOPIC: Loops & Range Iteration
 URL: https://www.hackerrank.com/challenges/c-tutorial-for-loop/problem
-DOMAIN / DIFFICULTY: Introduction | Easy
-LANGUAGE: C++14
-====================================================================
+DOMAIN / DIFFICULTY: C++ / Introduction | Easy
+PROGRAMMING LANGUAGE: C++14
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 A _for_ loop is a programming language statement which allows code to be repeatedly executed.  
@@ -54,15 +59,41 @@ For each integer $n$ in the inclusive interval $[a, b]$:
     even
     odd
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Iterate from a to b inclusive. If i is between 1 and 9, print the English word; if i > 9, print "even" or "odd" based on parity.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(b - a + 1)
+- Space Complexity: O(1)
+
+SOURCE CODE:
 #include <iostream>
 #include <string>
+
 using namespace std;
+
 int main() {
-    int a, b; cin >> a >> b;
-    string names[] = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-    for (int n = a; n <= b; ++n)
-        cout << (n <= 9 ? names[n] : (n % 2 ? "odd" : "even")) << '\n';
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int a, b;
+    if (cin >> a >> b) {
+        const string words[] = {
+            "", "one", "two", "three", "four",
+            "five", "six", "seven", "eight", "nine"
+        };
+
+        for (int i = a; i <= b; ++i) {
+            if (i >= 1 && i <= 9) {
+                cout << words[i] << '\n';
+            } else {
+                cout << ((i % 2 == 0) ? "even" : "odd") << '\n';
+            }
+        }
+    }
+
+    return 0;
 }
-====================================================================
+================================================================================

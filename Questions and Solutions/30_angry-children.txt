@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 30: Max Min
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #30: Max Min
+MODULE: Unit 3: Programming Basics
+TOPIC: Sliding Window & Greedy
 URL: https://www.hackerrank.com/challenges/angry-children/problem
-DOMAIN / DIFFICULTY: Greedy | Medium
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Greedy | Medium
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 You will be given a list of integers, $arr$, and a single integer $k$.  You must create an array of length $k$ from elements of $arr$ such that its *unfairness* is minimized. Call that array $arr'$.  Unfairness of an array is calculated as
@@ -130,11 +135,30 @@ Here k=4 ; selecting the 4 integers 1,2,3,4 , unfairness equals
 
 Here k=2 . arr^(′)=[2,2] or arr^(′)=[1,1] give the minimum unfairness of 0 .
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Sort the packet sizes and slide a fixed window of size K across the array. The unfairness of any contiguous subarray is arr[i + k - 1] - arr[i]. Find the minimum.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N log N)
+- Space Complexity: O(N)
+
+SOURCE CODE:
 import sys
-data = list(map(int, sys.stdin.buffer.read().split()))
-n, k = data[:2]
-a = sorted(data[2:])
-print(min(a[i+k-1] - a[i] for i in range(n-k+1)))
-====================================================================
+
+def main():
+    data = list(map(int, sys.stdin.buffer.read().split()))
+    if not data:
+        return
+    n = data[0]
+    k = data[1]
+    arr = sorted(data[2:])
+
+    # Sliding window of size k across the sorted array
+    min_unfairness = min(arr[i + k - 1] - arr[i] for i in range(n - k + 1))
+    print(min_unfairness)
+
+if __name__ == '__main__':
+    main()
+================================================================================

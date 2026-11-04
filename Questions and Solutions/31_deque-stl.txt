@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 31: Deque-STL
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #31: Deque-STL
+MODULE: Unit 3: Programming Basics
+TOPIC: Sliding Window (Monotonic Deque)
 URL: https://www.hackerrank.com/challenges/deque-stl/problem
-DOMAIN / DIFFICULTY: STL | Medium
-LANGUAGE: C++14
-====================================================================
+DOMAIN / DIFFICULTY: C++ / STL | Medium
+PROGRAMMING LANGUAGE: C++14
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Double ended queue or Deque(part of C++ STL) are sequence containers with dynamic sizes that can be expanded or contracted on both ends (either its front or its back). The member functions of deque that are mainly used are:
@@ -80,28 +85,62 @@ For the first case, the contiguous subarrays of size 2 are {3,4},{4,6},{6,3} and
   
 For the second case,the contiguous subarrays of size 4 are {3,4,5,8},{4,5,8,1},{5,8,1,4} and {8,1,4,10}. The 4 maximum element of subarray of size 4 are: 8 8 8 10.
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Maintain a monotonic descending double-ended queue storing element indices. For each sliding window of size K, the front of the deque gives the maximum in O(1) amortized time.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N)
+- Space Complexity: O(K)
+
+SOURCE CODE:
 #include <iostream>
 #include <vector>
 #include <deque>
+
 using namespace std;
+
 void printKMax(int arr[], int n, int k) {
-    deque<int> q;
+    deque<int> dq; // Stores indices of useful elements
+
     for (int i = 0; i < n; ++i) {
-        while (!q.empty() && q.front() <= i-k) q.pop_front();
-        while (!q.empty() && arr[q.back()] <= arr[i]) q.pop_back();
-        q.push_back(i);
-        if (i >= k-1) cout << arr[q.front()] << (i == n-1 ? '\n' : ' ');
+        // Remove indices outside the current window
+        if (!dq.empty() && dq.front() <= i - k) {
+            dq.pop_front();
+        }
+
+        // Maintain monotonic decreasing order in deque
+        while (!dq.empty() && arr[dq.back()] <= arr[i]) {
+            dq.pop_back();
+        }
+
+        dq.push_back(i);
+
+        // Window reaches full size k
+        if (i >= k - 1) {
+            cout << arr[dq.front()] << (i == n - 1 ? "" : " ");
+        }
     }
+    cout << '\n';
 }
+
 int main() {
-    ios::sync_with_stdio(false); cin.tie(nullptr);
-    int t; cin >> t;
-    while (t--) {
-        int n, k; cin >> n >> k; vector<int> a(n);
-        for (int &x : a) cin >> x;
-        printKMax(a.data(), n, k);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
+    if (cin >> t) {
+        while (t--) {
+            int n, k;
+            cin >> n >> k;
+            vector<int> arr(n);
+            for (int i = 0; i < n; ++i) {
+                cin >> arr[i];
+            }
+            printKMax(arr.data(), n, k);
+        }
     }
+    return 0;
 }
-====================================================================
+================================================================================

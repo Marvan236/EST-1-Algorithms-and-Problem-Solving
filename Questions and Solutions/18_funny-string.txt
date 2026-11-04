@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 18: Funny String
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #18: Funny String
+MODULE: Unit 3: Programming Basics
+TOPIC: Strings (ASCII Difference Symmetry)
 URL: https://www.hackerrank.com/challenges/funny-string/problem
-DOMAIN / DIFFICULTY: Strings | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Strings | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 In this challenge, you will determine whether a string is *funny* or not.  To determine whether a string is funny, create a copy of the string in reverse e.g. $abc \rightarrow cba$.  Iterating through each string, compare the absolute difference in the [ascii](https://en.wikipedia.org/wiki/ASCII) values of the characters at positions 0 and 1, 1 and 2 and so on to the end.  If the list of absolute differences is the same for both strings, they are funny.
@@ -72,10 +77,23 @@ Corresponding ASCII values of characters of the strings:
 s=[98,99,120,122] and r=[122,120,99,98]   
 The difference list for string s is [1, 21, 2] and for string r is [2, 21, 1].
 
-====================================================================
---- SOLUTION ---
-for _ in range(int(input())):
-    s = input().strip()
-    differences = [abs(ord(a) - ord(b)) for a, b in zip(s, s[1:])]
-    print('Funny' if differences == differences[::-1] else 'Not Funny')
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Compute absolute differences of adjacent character ASCII values and check if the resulting difference list equals its reversal.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(L) per query
+- Space Complexity: O(L)
+
+SOURCE CODE:
+def main():
+    q = int(input().strip())
+    for _ in range(q):
+        s = input().strip()
+        diffs = [abs(ord(s[i]) - ord(s[i+1])) for i in range(len(s) - 1)]
+        print("Funny" if diffs == diffs[::-1] else "Not Funny")
+
+if __name__ == '__main__':
+    main()
+================================================================================

@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 33: Counting Sort 2
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #33: Counting Sort 2
+MODULE: Unit 3: Programming Basics
+TOPIC: Bucketing (Full Counting Sort)
 URL: https://www.hackerrank.com/challenges/countingsort2/problem
-DOMAIN / DIFFICULTY: Sorting | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Sorting | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Often, when a list is sorted, the elements being sorted are just keys to other values. For example, if you are sorting files by their size, the sizes need to stay connected to their respective files. You cannot just take the size numbers and output them in order, you need to output all the required file information.
@@ -66,11 +71,25 @@ Print the sorted list as a single line of space-separated integers.
 
 Once our counting array has been filled, loop from index 0 to the end, printing each i value arr[i] times.
 
-====================================================================
---- SOLUTION ---
-n = int(input())
-counts = [0] * 100
-for x in map(int, input().split()):
-    counts[x] += 1
-print(*(x for x, count in enumerate(counts) for _ in range(count)))
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Populate frequency buckets for all values in [0, 99] and emit each value repeated according to its frequency count.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N + K)
+- Space Complexity: O(K)
+
+SOURCE CODE:
+def main():
+    n = int(input().strip())
+    freq = [0] * 100
+    for val in map(int, input().split()):
+        freq[val] += 1
+
+    sorted_arr = [val for val, count in enumerate(freq) for _ in range(count)]
+    print(*sorted_arr)
+
+if __name__ == '__main__':
+    main()
+================================================================================

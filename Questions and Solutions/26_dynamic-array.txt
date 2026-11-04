@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 26: Dynamic Array
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #26: Dynamic Array
+MODULE: Unit 3: Programming Basics
+TOPIC: Dynamic Arrays (Dynamic Sequence Queries)
 URL: https://www.hackerrank.com/challenges/dynamic-array/problem
-DOMAIN / DIFFICULTY: Arrays | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Data Structures / Arrays | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 - Declare a 2-dimensional array, $arr$, with $n$ empty arrays, all zero-indexed.
@@ -98,21 +103,45 @@ arr[1] = [7]
 
 Return your answer array [7, 3]. The code stub prints its elements on separate lines.
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Simulate dynamic 2D array queries where sequences are indexed by (x ^ last_answer) % n, appending or reading elements and maintaining last_answer.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(Q)
+- Space Complexity: O(N + Q)
+
+SOURCE CODE:
 import sys
-data = iter(map(int, sys.stdin.buffer.read().split()))
-n, q = next(data), next(data)
-sequences = [[] for _ in range(n)]
-last_answer = 0
-answers = []
-for _ in range(q):
-    kind, x, y = next(data), next(data), next(data)
-    seq = sequences[(x ^ last_answer) % n]
-    if kind == 1:
-        seq.append(y)
-    else:
-        last_answer = seq[y % len(seq)]
-        answers.append(str(last_answer))
-print('\n'.join(answers))
-====================================================================
+
+def main():
+    input_data = iter(sys.stdin.buffer.read().split())
+    try:
+        n = int(next(input_data))
+        q = int(next(input_data))
+    except StopIteration:
+        return
+
+    sequences = [[] for _ in range(n)]
+    last_answer = 0
+    results = []
+
+    for _ in range(q):
+        query_type = int(next(input_data))
+        x = int(next(input_data))
+        y = int(next(input_data))
+
+        idx = (x ^ last_answer) % n
+
+        if query_type == 1:
+            sequences[idx].append(y)
+        elif query_type == 2:
+            last_answer = sequences[idx][y % len(sequences[idx])]
+            results.append(str(last_answer))
+
+    sys.stdout.write('\n'.join(results) + '\n')
+
+if __name__ == '__main__':
+    main()
+================================================================================

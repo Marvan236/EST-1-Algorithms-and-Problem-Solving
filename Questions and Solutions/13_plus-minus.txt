@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 13: Plus Minus
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #13: Plus Minus
+MODULE: Unit 3: Programming Basics
+TOPIC: Arrays (Element Classification & Precision)
 URL: https://www.hackerrank.com/challenges/plus-minus/problem
-DOMAIN / DIFFICULTY: Warmup | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Warmup | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Given an array of integers, calculate the ratios of its elements that are $positive$, $negative$, and $zero$. Print the decimal value of each fraction on a new line with 6 places after the decimal.
@@ -60,10 +65,28 @@ $-100 \le arr[i] \le 100$
 There are 3 positive numbers, 2 negative numbers, and 1 zero in the array.   
 The proportions of occurrence are positive: 3/6=0.500000 , negative: 2/6=0.333333 and zeros: 1/6=0.166667 .
 
-====================================================================
---- SOLUTION ---
-n = int(input())
-a = list(map(int, input().split()))
-for count in (sum(x > 0 for x in a), sum(x < 0 for x in a), a.count(0)):
-    print(f'{count / n:.6f}')
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Count positive, negative, and zero elements in an array of size N, printing their proportions formatted to 6 decimal places.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N)
+- Space Complexity: O(1) auxiliary
+
+SOURCE CODE:
+def main():
+    n = int(input().strip())
+    arr = list(map(int, input().split()))
+
+    pos_count = sum(1 for x in arr if x > 0)
+    neg_count = sum(1 for x in arr if x < 0)
+    zero_count = sum(1 for x in arr if x == 0)
+
+    print(f"{pos_count / n:.6f}")
+    print(f"{neg_count / n:.6f}")
+    print(f"{zero_count / n:.6f}")
+
+if __name__ == '__main__':
+    main()
+================================================================================

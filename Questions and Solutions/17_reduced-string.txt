@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 17: Super Reduced String
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #17: Super Reduced String
+MODULE: Unit 3: Programming Basics
+TOPIC: Strings (Adjacent Duplicate Elimination)
 URL: https://www.hackerrank.com/challenges/reduced-string/problem
-DOMAIN / DIFFICULTY: Strings | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Strings | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Reduce a string of lowercase characters in range `ascii[‘a’..’z’]`by doing a series of operations.  In each operation, select a pair of adjacent letters that match, and delete them.  
@@ -96,13 +101,29 @@ Perform the following sequence of operations to get the final string:
     
     baab → bb → Empty String
 
-====================================================================
---- SOLUTION ---
-stack = []
-for c in input().strip():
-    if stack and stack[-1] == c:
-        stack.pop()
-    else:
-        stack.append(c)
-print(''.join(stack) or 'Empty String')
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Use a stack to greedily eliminate pairs of adjacent matching characters. If the stack is empty at the end, output "Empty String".
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(L)
+- Space Complexity: O(L)
+
+SOURCE CODE:
+def main():
+    s = input().strip()
+    stack = []
+
+    for char in s:
+        if stack and stack[-1] == char:
+            stack.pop()
+        else:
+            stack.append(char)
+
+    result = "".join(stack)
+    print(result if result else "Empty String")
+
+if __name__ == '__main__':
+    main()
+================================================================================

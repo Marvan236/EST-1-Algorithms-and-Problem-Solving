@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 35: Recursive Digit Sum
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #35: Recursive Digit Sum
+MODULE: Unit 3: Programming Basics
+TOPIC: Recursion & Number Theory (Digital Root)
 URL: https://www.hackerrank.com/challenges/recursive-digit-sum/problem
-DOMAIN / DIFFICULTY: Recursion | Medium
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Recursion | Medium
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 We define super digit of an integer $x$ using the following rules:  
@@ -121,9 +126,27 @@ Here n=123 and k=3 , so p=123123123 .
                    = super_digit(9)
                    = 9
 
-====================================================================
---- SOLUTION ---
-n, k = input().split()
-total = sum(map(int, n)) * int(k)
-print(0 if total == 0 else 1 + (total - 1) % 9)
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+The repeated sum of digits is mathematically identical to the digital root modulo 9: 1 + (total - 1) % 9 for total > 0.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(|N|)
+- Space Complexity: O(1)
+
+SOURCE CODE:
+def main():
+    n_str, k_str = input().split()
+    k = int(k_str)
+
+    # Initial sum of digits multiplied by repetition factor k
+    initial_sum = sum(int(ch) for ch in n_str) * k
+
+    # Digital root formula
+    super_digit = 0 if initial_sum == 0 else 1 + (initial_sum - 1) % 9
+    print(super_digit)
+
+if __name__ == '__main__':
+    main()
+================================================================================

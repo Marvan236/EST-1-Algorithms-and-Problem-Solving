@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 16: CamelCase
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #16: CamelCase
+MODULE: Unit 3: Programming Basics
+TOPIC: Strings (Word Boundary Detection)
 URL: https://www.hackerrank.com/challenges/camelcase/problem
-DOMAIN / DIFFICULTY: Strings | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Strings | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 There is a sequence of words in [CamelCase](https://en.wikipedia.org/wiki/CamelCase) as a string of letters, $s$, having the following properties:
@@ -65,8 +70,25 @@ String s contains five words:
 
 Need help? Try [this problem](https://www.hackerrank.com/challenges/solve-me-first) first to get familiar with HackerRank environment.
 
-====================================================================
---- SOLUTION ---
-s = input().strip()
-print(bool(s) + sum(c.isupper() for c in s))
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Count words in a camelCase string by counting uppercase letters plus 1 for the initial lowercase word.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(L)
+- Space Complexity: O(1)
+
+SOURCE CODE:
+def main():
+    s = input().strip()
+    if not s:
+        print(0)
+        return
+    # Initial word plus 1 for each uppercase character boundary
+    word_count = 1 + sum(1 for c in s if c.isupper())
+    print(word_count)
+
+if __name__ == '__main__':
+    main()
+================================================================================

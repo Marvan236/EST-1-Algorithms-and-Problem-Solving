@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 43: Handshake
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #43: Handshake
+MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Permutations & Combinations (Pairwise Combinations)
 URL: https://www.hackerrank.com/challenges/handshake/problem
-DOMAIN / DIFFICULTY: Fundamentals | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Mathematics / Combinatorics | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 At the annual meeting of Board of Directors of Acme Inc.  If everyone attending shakes hands exactly one time with every other attendee, how many handshakes are there?
@@ -50,9 +55,28 @@ $0 \lt n \lt 10^6$
 Case 1 : The lonely board member shakes no hands, hence 0.   
 Case 2 : There are 2 board members, so 1 handshake takes place.
 
-====================================================================
---- SOLUTION ---
-for _ in range(int(input())):
-    n = int(input())
-    print(n * (n - 1) // 2)
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+For N attendees where each pair shakes hands exactly once, the total number of handshakes is nC2 = N * (N - 1) // 2.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(1) per query
+- Space Complexity: O(1)
+
+SOURCE CODE:
+import sys
+
+def main():
+    lines = sys.stdin.read().split()
+    if not lines:
+        return
+    out = []
+    for token in lines[1:]:
+        n = int(token)
+        out.append(str(n * (n - 1) // 2))
+    sys.stdout.write('\n'.join(out) + '\n')
+
+if __name__ == '__main__':
+    main()
+================================================================================

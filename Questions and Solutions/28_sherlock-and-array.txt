@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 28: Sherlock and Array
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #28: Sherlock and Array
+MODULE: Unit 3: Programming Basics
+TOPIC: Pre-computation / Prefix Sums (Equilibrium Index)
 URL: https://www.hackerrank.com/challenges/sherlock-and-array/problem
-DOMAIN / DIFFICULTY: Search | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Search | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Watson gives Sherlock an array of integers.  His challenge is to find an element of the array such that the sum of all elements to the left is equal to the sum of all elements to the right.  
@@ -95,17 +100,45 @@ In the first test case, arr[2]=4 is between two subarrays summing to 2 .
 In the second case, arr[0]=2 is between two subarrays summing to 0 .   
 In the third case, arr[2]=2 is between two subarrays summing to 0 .
 
-====================================================================
---- SOLUTION ---
-for _ in range(int(input())):
-    n = int(input())
-    a = list(map(int, input().split()))
-    total, left = sum(a), 0
-    for x in a:
-        if left == total - left - x:
-            print('YES')
-            break
-        left += x
-    else:
-        print('NO')
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Precompute the total array sum, then maintain a running prefix sum left_sum. At each index, right_sum is (total_sum - left_sum - arr[i]). If left_sum == right_sum, equilibrium is found.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N)
+- Space Complexity: O(1) auxiliary
+
+SOURCE CODE:
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    it = iter(input_data)
+    num_tests = int(next(it))
+
+    out = []
+    for _ in range(num_tests):
+        n = int(next(it))
+        arr = [int(next(it)) for _ in range(n)]
+
+        total_sum = sum(arr)
+        left_sum = 0
+        found = False
+
+        for x in arr:
+            # Check if left sum equals right sum
+            if left_sum == total_sum - left_sum - x:
+                found = True
+                break
+            left_sum += x
+
+        out.append("YES" if found else "NO")
+
+    sys.stdout.write('\n'.join(out) + '\n')
+
+if __name__ == '__main__':
+    solve()
+================================================================================

@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 07: Python If-Else
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #07: Python If-Else
+MODULE: Unit 3: Programming Basics
+TOPIC: Decision Making (Conditional Branches)
 URL: https://www.hackerrank.com/challenges/py-if-else/problem
-DOMAIN / DIFFICULTY: Introduction | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Python / Introduction | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 _(Check [Tutorial](https://www.hackerrank.com/challenges/py-if-else/tutorial) tab to know how to solve.)  
@@ -62,8 +67,24 @@ n is odd and odd numbers are weird, so print `Weird`.
 n=24   
 n>20 and n is even, so it is not weird.
 
-====================================================================
---- SOLUTION ---
-n = int(input())
-print('Weird' if n % 2 or 6 <= n <= 20 else 'Not Weird')
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Evaluate an integer n using conditional rules: odd numbers or even numbers between 6 and 20 are "Weird"; otherwise "Not Weird".
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(1)
+- Space Complexity: O(1)
+
+SOURCE CODE:
+def main():
+    n = int(input().strip())
+    # Weird if odd or even in the inclusive range [6, 20]
+    if n % 2 != 0 or (6 <= n <= 20):
+        print("Weird")
+    else:
+        print("Not Weird")
+
+if __name__ == '__main__':
+    main()
+================================================================================

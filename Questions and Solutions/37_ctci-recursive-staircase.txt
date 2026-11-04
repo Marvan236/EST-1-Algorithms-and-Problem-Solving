@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 37: Recursion: Davis' Staircase
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #37: Recursion: Davis' Staircase
+MODULE: Unit 3: Programming Basics
+TOPIC: Recursion & Dynamic Programming (Tribonacci)
 URL: https://www.hackerrank.com/challenges/ctci-recursive-staircase/problem
-DOMAIN / DIFFICULTY: ai | Medium
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Interview Prep / Recursion | Medium
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Davis has a number of staircases in his house and he likes to climb each staircase $1$, $2$, or $3$ steps at a time. Being a very precocious child, he wonders how many ways there are to reach the top of the staircase.
@@ -95,18 +100,42 @@ Let's calculate the number of ways of climbing the first two of the Davis' s=3 s
 
 Thus, we print 4 on a new line.
 
-====================================================================
---- SOLUTION ---
-from functools import lru_cache
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Compute distinct ways to climb N stairs taking 1, 2, or 3 steps. Follows Tribonacci recurrence: dp[i] = dp[i-1] + dp[i-2] + dp[i-3] modulo 10000000007.
 
-@lru_cache(None)
-def stepPerms(n):
-    if n < 0:
-        return 0
-    if n == 0:
-        return 1
-    return sum(stepPerms(n - step) for step in (1, 2, 3)) % 10000000007
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N)
+- Space Complexity: O(N)
 
-for _ in range(int(input())):
-    print(stepPerms(int(input())))
-====================================================================
+SOURCE CODE:
+import sys
+
+MOD = 10000000007
+
+def solve():
+    queries = list(map(int, sys.stdin.read().split()))
+    if not queries:
+        return
+    num_tests = queries[0]
+    cases = queries[1:num_tests+1]
+    if not cases:
+        return
+
+    max_n = max(cases)
+    dp = [0] * max(4, max_n + 1)
+    dp[0] = 1
+    dp[1] = 1
+    dp[2] = 2
+    dp[3] = 4
+
+    for i in range(4, max_n + 1):
+        dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % MOD
+
+    out = [str(dp[n]) for n in cases]
+    sys.stdout.write('\n'.join(out) + '\n')
+
+if __name__ == '__main__':
+    solve()
+================================================================================

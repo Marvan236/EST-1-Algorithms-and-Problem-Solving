@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 45: nCr table
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #45: nCr table
+MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Pascal's Triangle & Combinations
 URL: https://www.hackerrank.com/challenges/ncr-table/problem
-DOMAIN / DIFFICULTY: Combinatorics | Medium
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Mathematics / Combinatorics | Medium
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 Jim is doing his discrete maths homework which requires him to repeatedly calculate ^(n)C_(r)(n choose r) for different values of n. Knowing that this is time consuming, he goes to his sister June for help. June,  being a computer science student knows how to convert this into a computer program and generate the answers quickly. She tells him, by storing the lower values of ^(n)C_(r)(n choose r), one can calculate the higher values using a very simple formula. 
@@ -39,14 +44,35 @@ For each n output the list of ^(n)C_(0) to ^(n)C_(n) each separated by a single 
 **Explanation**  
 For 2 we can check ^(2)C_(0)  ^(2)C_(1) and ^(2)C_(2) are 1, 2 and 1 respectively. The other inputs' answer follow similar pattern.
 
-====================================================================
---- SOLUTION ---
-for _ in range(int(input())):
-    n = int(input())
-    coefficient = 1
-    row = []
-    for r in range(n + 1):
-        row.append(str(coefficient % 1000000000))
-        coefficient = coefficient * (n - r) // (r + 1)
-    print(' '.join(row))
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Compute the n-th row of Pascal's triangle mod 10^9: nCr = nC(r-1) * (n - r + 1) // r.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(N) per query
+- Space Complexity: O(N)
+
+SOURCE CODE:
+import sys
+
+MOD = 1000000000
+
+def main():
+    lines = sys.stdin.read().split()
+    if not lines:
+        return
+    out = []
+    for token in lines[1:]:
+        n = int(token)
+        row = []
+        coeff = 1
+        for r in range(n + 1):
+            row.append(str(coeff % MOD))
+            coeff = coeff * (n - r) // (r + 1)
+        out.append(' '.join(row))
+    sys.stdout.write('\n'.join(out) + '\n')
+
+if __name__ == '__main__':
+    main()
+================================================================================

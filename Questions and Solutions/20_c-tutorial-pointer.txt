@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 20: Pointer
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #20: Pointer
+MODULE: Unit 3: Programming Basics
+TOPIC: Pointers (Reference Modification in C++)
 URL: https://www.hackerrank.com/challenges/c-tutorial-pointer/problem
-DOMAIN / DIFFICULTY: Introduction | Easy
-LANGUAGE: C++14
-====================================================================
+DOMAIN / DIFFICULTY: C++ / Introduction | Easy
+PROGRAMMING LANGUAGE: C++14
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 A [pointer](http://en.wikipedia.org/wiki/Pointer_%28computer_programming%29) in C++ is used to share a memory address among different contexts (primarily functions). They are used whenever a function needs to modify the content of a variable, but it does not have ownership.  
@@ -65,16 +70,38 @@ Input will contain two integers, $a$ and $b$, separated by a newline.
   * a^(′)=4+5=9 
   * b^(′)=∣4−5∣=1
 
-====================================================================
---- SOLUTION ---
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Mutate two integers in-place via pointer dereferencing: *a becomes (*a + *b) and *b becomes |*a - *b|.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(1)
+- Space Complexity: O(1)
+
+SOURCE CODE:
 #include <iostream>
 #include <cstdlib>
+
+using namespace std;
+
 void update(int *a, int *b) {
-    int sum = *a + *b, difference = std::abs(*a - *b);
-    *a = sum; *b = difference;
+    int sum = *a + *b;
+    int diff = abs(*a - *b);
+    *a = sum;
+    *b = diff;
 }
+
 int main() {
-    int a, b; std::cin >> a >> b; update(&a, &b);
-    std::cout << a << '\n' << b << '\n';
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int a, b;
+    if (cin >> a >> b) {
+        update(&a, &b);
+        cout << a << '\n' << b << '\n';
+    }
+
+    return 0;
 }
-====================================================================
+================================================================================

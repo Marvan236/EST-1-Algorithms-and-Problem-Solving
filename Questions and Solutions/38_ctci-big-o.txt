@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 38: Time Complexity: Primality
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #38: Time Complexity: Primality
+MODULE: Unit 3: Programming Basics
+TOPIC: Time & Space Complexity (O(sqrt(N)) Primality)
 URL: https://www.hackerrank.com/challenges/ctci-big-o/problem
-DOMAIN / DIFFICULTY: ai | Medium
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Interview Prep / Time Complexity | Medium
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 A *prime* is a natural number *greater than* $1$ that has no positive divisors other than $1$ and itself. Given $p$ integers, determine the primality of each integer and return `Prime` or `Not prime` on a new line. 
@@ -59,17 +64,40 @@ We check the following p=3 integers for primality:
   2. n=5 is only divisible 1 and itself.
   3. n=7 is only divisible 1 and itself.
 
-====================================================================
---- SOLUTION ---
-from math import isqrt
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Determine primality in O(sqrt(n)) time by eliminating multiples of 2 and 3, then testing potential factors 6k +- 1 up to sqrt(n).
 
-def is_prime(n):
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(sqrt(N))
+- Space Complexity: O(1)
+
+SOURCE CODE:
+from math import isqrt
+import sys
+
+def is_prime(n: int) -> bool:
     if n < 2:
         return False
-    if n % 2 == 0:
-        return n == 2
-    return all(n % divisor for divisor in range(3, isqrt(n) + 1, 2))
+    if n in (2, 3):
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    # Test factors of form 6k +- 1
+    limit = isqrt(n)
+    for factor in range(5, limit + 1, 6):
+        if n % factor == 0 or n % (factor + 2) == 0:
+            return False
+    return True
 
-for _ in range(int(input())):
-    print('Prime' if is_prime(int(input())) else 'Not prime')
-====================================================================
+def main():
+    lines = sys.stdin.read().split()
+    if not lines:
+        return
+    for num in map(int, lines[1:]):
+        print("Prime" if is_prime(num) else "Not prime")
+
+if __name__ == '__main__':
+    main()
+================================================================================

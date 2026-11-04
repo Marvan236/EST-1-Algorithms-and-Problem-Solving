@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 05: Arithmetic Operators
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #05: Arithmetic Operators
+MODULE: Unit 3: Programming Basics
+TOPIC: Arithmetic Operators
 URL: https://www.hackerrank.com/challenges/python-arithmetic-operators/problem
-DOMAIN / DIFFICULTY: Introduction | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Python / Introduction | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 _(Check [Tutorial](https://www.hackerrank.com/challenges/python-arithmetic-operators/tutorial) tab to know how to to solve.)  
@@ -68,11 +73,26 @@ Print the three lines as explained above.
 3−2⟹1   
 3∗2⟹6
 
-====================================================================
---- SOLUTION ---
-a = int(input())
-b = int(input())
-print(a + b)
-print(a - b)
-print(a * b)
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Read two integers a and b, computing their sum, difference, and product on consecutive lines.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(1)
+- Space Complexity: O(1)
+
+SOURCE CODE:
+def main():
+    # Read two integers from input
+    a = int(input().strip())
+    b = int(input().strip())
+
+    # Compute and output sum, difference, and product
+    print(a + b)
+    print(a - b)
+    print(a * b)
+
+if __name__ == '__main__':
+    main()
+================================================================================

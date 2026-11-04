@@ -1,9 +1,14 @@
-====================================================================
-QUESTION # 19: Pangrams
+================================================================================
+EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+STUDENT: Mohamed Marvan yacub hasan
+USN: 26MCAR0036
+QUESTION #19: Pangrams
+MODULE: Unit 3: Programming Basics
+TOPIC: Strings (Alphabet Hashing & Completeness)
 URL: https://www.hackerrank.com/challenges/pangrams/problem
-DOMAIN / DIFFICULTY: Strings | Easy
-LANGUAGE: Python 3
-====================================================================
+DOMAIN / DIFFICULTY: Algorithms / Strings | Easy
+PROGRAMMING LANGUAGE: Python 3
+================================================================================
 
 --- PROBLEM DESCRIPTION ---
 A *pangram* is a string that contains every letter of the alphabet.  Given a sentence determine whether it is a pangram in the English alphabet.  Ignore case.  Return either `pangram` or `not pangram` as appropriate.
@@ -60,8 +65,28 @@ All of the letters of the alphabet are present in the string.
 
 The string lacks an `x`.
 
-====================================================================
---- SOLUTION ---
-letters = set(input().lower())
-print('pangram' if set('abcdefghijklmnopqrstuvwxyz') <= letters else 'not pangram')
-====================================================================
+================================================================================
+--- SOLUTION & ANALYSIS ---
+APPROACH / STRATEGY:
+Convert the input sentence to lowercase and verify if the set of characters contains all 26 letters of the English alphabet.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity:  O(L)
+- Space Complexity: O(1)
+
+SOURCE CODE:
+import string
+
+def main():
+    s = input().strip().lower()
+    alphabet = set(string.ascii_lowercase)
+    char_set = set(s)
+
+    if alphabet.issubset(char_set):
+        print("pangram")
+    else:
+        print("not pangram")
+
+if __name__ == '__main__':
+    main()
+================================================================================
