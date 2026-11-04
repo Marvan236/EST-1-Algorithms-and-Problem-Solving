@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #28: Sherlock and Array
-MODULE: Unit 3: Programming Basics
-TOPIC: Pre-computation / Prefix Sums (Equilibrium Index)
-URL: https://www.hackerrank.com/challenges/sherlock-and-array/problem
-DOMAIN / DIFFICULTY: Algorithms / Search | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Equilibrium Index via Prefix Sums
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/sherlock-and-array/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -101,44 +100,44 @@ In the second case, arr[0]=2 is between two subarrays summing to 0 .
 In the third case, arr[2]=2 is between two subarrays summing to 0 .
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Precompute the total array sum, then maintain a running prefix sum left_sum. At each index, right_sum is (total_sum - left_sum - arr[i]). If left_sum == right_sum, equilibrium is found.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Calculate the grand total of the array. Track running left_sum; at each index, right_sum is total - left_sum - arr[i]. If left_sum equals right_sum, equilibrium is detected.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N)
-- Space Complexity: O(1) auxiliary
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(1) auxiliary
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import sys
 
-def solve():
-    input_data = sys.stdin.read().split()
-    if not input_data:
+def balanced_sums():
+    data = sys.stdin.read().split()
+    if not data:
         return
-    it = iter(input_data)
-    num_tests = int(next(it))
+    it = iter(data)
+    test_cases = int(next(it))
+    results = []
 
-    out = []
-    for _ in range(num_tests):
-        n = int(next(it))
-        arr = [int(next(it)) for _ in range(n)]
-
+    for _ in range(test_cases):
+        length = int(next(it))
+        arr = [int(next(it)) for _ in range(length)]
+        
         total_sum = sum(arr)
         left_sum = 0
-        found = False
+        is_balanced = False
 
-        for x in arr:
-            # Check if left sum equals right sum
-            if left_sum == total_sum - left_sum - x:
-                found = True
+        for val in arr:
+            right_sum = total_sum - left_sum - val
+            if left_sum == right_sum:
+                is_balanced = True
                 break
-            left_sum += x
+            left_sum += val
 
-        out.append("YES" if found else "NO")
+        results.append("YES" if is_balanced else "NO")
 
-    sys.stdout.write('\n'.join(out) + '\n')
+    sys.stdout.write("\n".join(results) + "\n")
 
 if __name__ == '__main__':
-    solve()
+    balanced_sums()
 ================================================================================

@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #21: Pointers in C
-MODULE: Unit 3: Programming Basics
-TOPIC: Pointers (Memory Addresses & Dereferencing)
-URL: https://www.hackerrank.com/challenges/pointer-in-c/problem
-DOMAIN / DIFFICULTY: C / Introduction | Easy
-PROGRAMMING LANGUAGE: C
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Direct Memory Addressing & Arithmetic in C
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/pointer-in-c/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: C
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -70,30 +69,30 @@ Note: Input/ouput will be automatically handled. You only have to complete the f
   * b^(′)=∣4−5∣=1
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Use C pointers to simultaneously compute the sum and absolute difference of two integer variables.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Implement C pointer updating: compute sum and absolute difference through pointer dereferences and overwrite pointed variables.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <stdio.h>
 #include <stdlib.h>
 
 void update(int *a, int *b) {
-    int sum = *a + *b;
-    int diff = abs(*a - *b);
-    *a = sum;
-    *b = diff;
+    int addition = *a + *b;
+    int difference = abs(*a - *b);
+    *a = addition;
+    *b = difference;
 }
 
 int main() {
-    int a, b;
-    if (scanf("%d %d", &a, &b) == 2) {
-        update(&a, &b);
-        printf("%d\n%d\n", a, b);
+    int x, y;
+    if (scanf("%d %d", &x, &y) == 2) {
+        update(&x, &y);
+        printf("%d\n%d\n", x, y);
     }
     return 0;
 }

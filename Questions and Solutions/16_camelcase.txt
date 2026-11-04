@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #16: CamelCase
-MODULE: Unit 3: Programming Basics
-TOPIC: Strings (Word Boundary Detection)
-URL: https://www.hackerrank.com/challenges/camelcase/problem
-DOMAIN / DIFFICULTY: Algorithms / Strings | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: String Parsing & Case Identification
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/camelcase/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -71,24 +70,21 @@ String s contains five words:
 Need help? Try [this problem](https://www.hackerrank.com/challenges/solve-me-first) first to get familiar with HackerRank environment.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Count words in a camelCase string by counting uppercase letters plus 1 for the initial lowercase word.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Identify word boundaries by counting uppercase characters in the camelCase string and adding 1 for the initial lowercase word.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(L)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(L)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
-def main():
-    s = input().strip()
+STANDALONE IMPLEMENTATION:
+def count_camel_words(s: str) -> int:
     if not s:
-        print(0)
-        return
-    # Initial word plus 1 for each uppercase character boundary
-    word_count = 1 + sum(1 for c in s if c.isupper())
-    print(word_count)
+        return 0
+    return 1 + sum(1 for ch in s if ch.isupper())
 
 if __name__ == '__main__':
-    main()
+    text = input().strip()
+    print(count_camel_words(text))
 ================================================================================

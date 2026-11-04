@@ -33,3 +33,4 @@ build_readme.py
 !/Questions and Solutions/
 /Questions and Solutions/*
 !/Questions and Solutions/*.txt
+generate_v2.py

@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #22: Functions
-MODULE: Unit 3: Programming Basics
-TOPIC: Functions (Parameter Passing & Comparison)
-URL: https://www.hackerrank.com/challenges/c-tutorial-functions/problem
-DOMAIN / DIFFICULTY: C++ / Introduction | Easy
-PROGRAMMING LANGUAGE: C++14
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Modular Functions & Value Maximization
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/c-tutorial-functions/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: C++14
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -67,33 +66,28 @@ Return the greatest of the four integers.
     6
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Define a function max_of_four(a, b, c, d) using nested std::max comparisons to find the largest of four integers.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Implement a helper function max_of_four returning the highest integer among four arguments via pairwise std::max comparisons.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <iostream>
 #include <algorithm>
 
-using namespace std;
-
 int max_of_four(int a, int b, int c, int d) {
-    return max(max(a, b), max(c, d));
+    return std::max(std::max(a, b), std::max(c, d));
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    int a, b, c, d;
-    if (cin >> a >> b >> c >> d) {
-        cout << max_of_four(a, b, c, d) << '\n';
+    int w, x, y, z;
+    if (std::cin >> w >> x >> y >> z) {
+        std::cout << max_of_four(w, x, y, z) << '
+';
     }
-
     return 0;
 }
 ================================================================================

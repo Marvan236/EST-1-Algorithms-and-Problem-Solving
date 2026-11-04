@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #38: Time Complexity: Primality
-MODULE: Unit 3: Programming Basics
-TOPIC: Time & Space Complexity (O(sqrt(N)) Primality)
-URL: https://www.hackerrank.com/challenges/ctci-big-o/problem
-DOMAIN / DIFFICULTY: Interview Prep / Time Complexity | Medium
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: O(sqrt(N)) Primality Testing & Optimization
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/ctci-big-o/problem)
+DIFFICULTY: Medium | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -65,29 +64,29 @@ We check the following p=3 integers for primality:
   3. n=7 is only divisible 1 and itself.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Determine primality in O(sqrt(n)) time by eliminating multiples of 2 and 3, then testing potential factors 6k +- 1 up to sqrt(n).
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Eliminate multiples of 2 and 3, then test potential divisors of the form 6k +- 1 up to sqrt(N) to verify primality in O(sqrt(N)).
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(sqrt(N))
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(sqrt(N))
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 from math import isqrt
 import sys
 
-def is_prime(n: int) -> bool:
+def check_primality(n: int) -> bool:
     if n < 2:
         return False
     if n in (2, 3):
         return True
     if n % 2 == 0 or n % 3 == 0:
         return False
-    # Test factors of form 6k +- 1
+    # Check numbers of form 6k - 1 and 6k + 1 up to sqrt(n)
     limit = isqrt(n)
-    for factor in range(5, limit + 1, 6):
-        if n % factor == 0 or n % (factor + 2) == 0:
+    for p in range(5, limit + 1, 6):
+        if n % p == 0 or n % (p + 2) == 0:
             return False
     return True
 
@@ -96,7 +95,7 @@ def main():
     if not lines:
         return
     for num in map(int, lines[1:]):
-        print("Prime" if is_prime(num) else "Not prime")
+        print("Prime" if check_primality(num) else "Not prime")
 
 if __name__ == '__main__':
     main()

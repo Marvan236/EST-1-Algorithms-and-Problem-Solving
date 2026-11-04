@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #37: Recursion: Davis' Staircase
-MODULE: Unit 3: Programming Basics
-TOPIC: Recursion & Dynamic Programming (Tribonacci)
-URL: https://www.hackerrank.com/challenges/ctci-recursive-staircase/problem
-DOMAIN / DIFFICULTY: Interview Prep / Recursion | Medium
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Tribonacci Recurrence & Dynamic Programming
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/ctci-recursive-staircase/problem)
+DIFFICULTY: Medium | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -101,41 +100,39 @@ Let's calculate the number of ways of climbing the first two of the Davis' s=3 s
 Thus, we print 4 on a new line.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Compute distinct ways to climb N stairs taking 1, 2, or 3 steps. Follows Tribonacci recurrence: dp[i] = dp[i-1] + dp[i-2] + dp[i-3] modulo 10000000007.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Davis can jump 1, 2, or 3 steps. Number of ways satisfies the 3-step recurrence dp[i] = dp[i-1] + dp[i-2] + dp[i-3] modulo 10000000007.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N)
-- Space Complexity: O(N)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(N)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import sys
 
 MOD = 10000000007
 
-def solve():
-    queries = list(map(int, sys.stdin.read().split()))
-    if not queries:
+def stair_combinations():
+    tokens = list(map(int, sys.stdin.read().split()))
+    if not tokens:
         return
-    num_tests = queries[0]
-    cases = queries[1:num_tests+1]
+    cases = tokens[1:]
     if not cases:
         return
 
-    max_n = max(cases)
-    dp = [0] * max(4, max_n + 1)
+    peak = max(cases)
+    dp = [0] * max(4, peak + 1)
     dp[0] = 1
     dp[1] = 1
     dp[2] = 2
     dp[3] = 4
 
-    for i in range(4, max_n + 1):
-        dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % MOD
+    for step in range(4, peak + 1):
+        dp[step] = (dp[step - 1] + dp[step - 2] + dp[step - 3]) % MOD
 
-    out = [str(dp[n]) for n in cases]
-    sys.stdout.write('\n'.join(out) + '\n')
+    sys.stdout.write("\n".join(str(dp[n]) for n in cases) + "\n")
 
 if __name__ == '__main__':
-    solve()
+    stair_combinations()
 ================================================================================

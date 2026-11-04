@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #45: nCr table
-MODULE: Units 4 & 5: Problems on Maths
-TOPIC: Pascal's Triangle & Combinations
-URL: https://www.hackerrank.com/challenges/ncr-table/problem
-DOMAIN / DIFFICULTY: Mathematics / Combinatorics | Medium
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Pascal's Triangle & Combinatorial Coefficients
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/ncr-table/problem)
+DIFFICULTY: Medium | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -45,34 +44,34 @@ For each n output the list of ^(n)C_(0) to ^(n)C_(n) each separated by a single 
 For 2 we can check ^(2)C_(0)  ^(2)C_(1) and ^(2)C_(2) are 1, 2 and 1 respectively. The other inputs' answer follow similar pattern.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Compute the n-th row of Pascal's triangle mod 10^9: nCr = nC(r-1) * (n - r + 1) // r.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Generate row n of Pascal's triangle modulo 10^9 using recurrence C(n, r) = C(n, r - 1) * (n - r + 1) // r.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N) per query
-- Space Complexity: O(N)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(N)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import sys
 
 MOD = 1000000000
 
-def main():
-    lines = sys.stdin.read().split()
-    if not lines:
+def generate_ncr_rows():
+    tokens = sys.stdin.read().split()
+    if not tokens:
         return
-    out = []
-    for token in lines[1:]:
+    output = []
+    for token in tokens[1:]:
         n = int(token)
         row = []
-        coeff = 1
+        c = 1
         for r in range(n + 1):
-            row.append(str(coeff % MOD))
-            coeff = coeff * (n - r) // (r + 1)
-        out.append(' '.join(row))
-    sys.stdout.write('\n'.join(out) + '\n')
+            row.append(str(c % MOD))
+            c = c * (n - r) // (r + 1)
+        output.append(" ".join(row))
+    sys.stdout.write("\n".join(output) + "\n")
 
 if __name__ == '__main__':
-    main()
+    generate_ncr_rows()
 ================================================================================

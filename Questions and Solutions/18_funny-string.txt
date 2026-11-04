@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #18: Funny String
-MODULE: Unit 3: Programming Basics
-TOPIC: Strings (ASCII Difference Symmetry)
-URL: https://www.hackerrank.com/challenges/funny-string/problem
-DOMAIN / DIFFICULTY: Algorithms / Strings | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: String Differences & Palindromic Symmetry
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/funny-string/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -78,22 +77,21 @@ s=[98,99,120,122] and r=[122,120,99,98]
 The difference list for string s is [1, 21, 2] and for string r is [2, 21, 1].
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Compute absolute differences of adjacent character ASCII values and check if the resulting difference list equals its reversal.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Compute absolute adjacent ASCII differences |ord(s[i]) - ord(s[i+1])| and check if the resulting array is symmetric (identical to its reverse).
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(L) per query
-- Space Complexity: O(L)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(L)
+- Auxiliary Space Complexity: O(L)
 
-SOURCE CODE:
-def main():
-    q = int(input().strip())
-    for _ in range(q):
-        s = input().strip()
-        diffs = [abs(ord(s[i]) - ord(s[i+1])) for i in range(len(s) - 1)]
-        print("Funny" if diffs == diffs[::-1] else "Not Funny")
+STANDALONE IMPLEMENTATION:
+def is_funny_string(s: str) -> str:
+    diffs = [abs(ord(s[i]) - ord(s[i + 1])) for i in range(len(s) - 1)]
+    return "Funny" if diffs == diffs[::-1] else "Not Funny"
 
 if __name__ == '__main__':
-    main()
+    t = int(input().strip())
+    for _ in range(t):
+        print(is_funny_string(input().strip()))
 ================================================================================

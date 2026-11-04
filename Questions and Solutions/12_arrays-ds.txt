@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #12: Arrays - DS
-MODULE: Unit 3: Programming Basics
-TOPIC: Arrays (Sequence Reversal)
-URL: https://www.hackerrank.com/challenges/arrays-ds/problem
-DOMAIN / DIFFICULTY: Data Structures / Arrays | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Contiguous Sequence Inversion
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/arrays-ds/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -54,21 +53,20 @@ Sample Output
 3 2 1
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Read an array of N integers and print the elements in reverse order separated by spaces.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Reverse a sequence of elements and print the inverted sequence delimited by spaces.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N)
-- Space Complexity: O(N)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(N)
 
-SOURCE CODE:
-def main():
-    n = int(input().strip())
-    arr = list(map(int, input().split()))
-    # Reverse and unpack space-separated
-    print(*arr[::-1])
+STANDALONE IMPLEMENTATION:
+def reverse_array():
+    _ = input()
+    nums = input().split()
+    print(" ".join(reversed(nums)))
 
 if __name__ == '__main__':
-    main()
+    reverse_array()
 ================================================================================

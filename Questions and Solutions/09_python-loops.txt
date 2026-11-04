@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #09: Loops
-MODULE: Unit 3: Programming Basics
-TOPIC: Loops & Iteration
-URL: https://www.hackerrank.com/challenges/python-loops/problem
-DOMAIN / DIFFICULTY: Python / Introduction | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Sequential Iteration & Exponentiation
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/python-loops/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -55,20 +54,20 @@ Print $n$ lines, one corresponding to each $i$.
     16
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Iterate through all non-negative integers i < N and print the square of each integer.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Loop through all non-negative integers from index 0 to N-1 and output the square of each index.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
-def main():
-    n = int(input().strip())
-    for i in range(n):
-        print(i * i)
+STANDALONE IMPLEMENTATION:
+def print_squares():
+    count = int(input().strip())
+    for index in range(count):
+        print(index ** 2)
 
 if __name__ == '__main__':
-    main()
+    print_squares()
 ================================================================================

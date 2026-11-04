@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #07: Python If-Else
-MODULE: Unit 3: Programming Basics
-TOPIC: Decision Making (Conditional Branches)
-URL: https://www.hackerrank.com/challenges/py-if-else/problem
-DOMAIN / DIFFICULTY: Python / Introduction | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Conditional Branching Logic
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/py-if-else/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -68,23 +67,22 @@ n=24
 n>20 and n is even, so it is not weird.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Evaluate an integer n using conditional rules: odd numbers or even numbers between 6 and 20 are "Weird"; otherwise "Not Weird".
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Check parity and range conditions for input integer n: if n is odd or falls in [6, 20], output Weird; otherwise Not Weird.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
-def main():
-    n = int(input().strip())
-    # Weird if odd or even in the inclusive range [6, 20]
-    if n % 2 != 0 or (6 <= n <= 20):
-        print("Weird")
-    else:
-        print("Not Weird")
+STANDALONE IMPLEMENTATION:
+def evaluate_number(n: int) -> str:
+    # Check if number is odd or even in range [6, 20]
+    is_odd = (n % 2 != 0)
+    in_range = (6 <= n <= 20)
+    return "Weird" if (is_odd or in_range) else "Not Weird"
 
 if __name__ == '__main__':
-    main()
+    val = int(input().strip())
+    print(evaluate_number(val))
 ================================================================================

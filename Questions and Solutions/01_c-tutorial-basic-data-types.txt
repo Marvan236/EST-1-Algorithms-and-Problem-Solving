@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #01: Basic Data Types
-MODULE: Unit 3: Programming Basics
-TOPIC: Data Types & I/O Formatting
-URL: https://www.hackerrank.com/challenges/c-tutorial-basic-data-types/problem
-DOMAIN / DIFFICULTY: C++ / Introduction | Easy
-PROGRAMMING LANGUAGE: C++14
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Fundamental Types & Formatted I/O
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/c-tutorial-basic-data-types/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: C++14
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -83,43 +82,43 @@ followed by _float_ 334.23 ,
 followed by _double_ 14049.30493 .
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Read heterogeneous primitive types (int, long long, char, float, double) from standard input and format the floating-point values to specified precision using std::fixed and std::setprecision.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Read primitive numeric and character types sequentially from stdin using C++ stream extraction, and output floating-point values formatted with exact decimal places via std::fixed and std::setprecision.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
 int main() {
-    // Fast I/O
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    // Decouple C++ streams from standard C streams for accelerated I/O
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
 
-    int i;
-    long long l;
-    char c;
-    float f;
-    double d;
+    int integer_val;
+    long long long_val;
+    char char_val;
+    float float_val;
+    double double_val;
 
-    // Read the space-separated primitives
-    if (cin >> i >> l >> c >> f >> d) {
-        // Output integer, long long, and character
-        cout << i << '\n';
-        cout << l << '\n';
-        cout << c << '\n';
-
-        // Format float to 3 decimal places
-        cout << fixed << setprecision(3) << f << '\n';
-
-        // Format double to 9 decimal places
-        cout << setprecision(9) << d << '\n';
+    // Stream extraction of 5 space-delimited values
+    if (std::cin >> integer_val >> long_val >> char_val >> float_val >> double_val) {
+        std::cout << integer_val << '
+';
+        std::cout << long_val << '
+';
+        std::cout << char_val << '
+';
+        // Display float with exactly 3 fractional digits
+        std::cout << std::fixed << std::setprecision(3) << float_val << '
+';
+        // Display double with exactly 9 fractional digits
+        std::cout << std::setprecision(9) << double_val << '
+';
     }
 
     return 0;

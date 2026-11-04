@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #08: Conditional Statements
-MODULE: Unit 3: Programming Basics
-TOPIC: Decision Making (Selection Statements)
-URL: https://www.hackerrank.com/challenges/c-tutorial-conditional-if-else/problem
-DOMAIN / DIFFICULTY: C++ / Introduction | Easy
-PROGRAMMING LANGUAGE: C++14
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Multi-branch Selection & Array Lookup
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/c-tutorial-conditional-if-else/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: C++14
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -117,38 +116,34 @@ If $1 \le n \le 9$, then print the lowercase English word corresponding to the n
 n=44 is greater than 9 , so we print `Greater than 9`.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Map digits 1 through 9 to their lowercase English string representations; print "Greater than 9" for inputs > 9.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Use direct array indexing for numbers 1 through 9 to display word representations in constant time, falling back to "Greater than 9" for larger values.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    int n;
-    if (cin >> n) {
-        const string words[] = {
+    int val;
+    if (std::cin >> val) {
+        static const std::string words[] = {
             "", "one", "two", "three", "four",
             "five", "six", "seven", "eight", "nine"
         };
 
-        if (n >= 1 && n <= 9) {
-            cout << words[n] << '\n';
-        } else if (n > 9) {
-            cout << "Greater than 9\n";
+        if (val >= 1 && val <= 9) {
+            std::cout << words[val] << '
+';
+        } else if (val > 9) {
+            std::cout << "Greater than 9
+";
         }
     }
-
     return 0;
 }
 ================================================================================

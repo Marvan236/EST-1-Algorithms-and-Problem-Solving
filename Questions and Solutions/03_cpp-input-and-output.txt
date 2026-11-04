@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #03: Input and Output
-MODULE: Unit 3: Programming Basics
-TOPIC: Input / Output Streams
-URL: https://www.hackerrank.com/challenges/cpp-input-and-output/problem
-DOMAIN / DIFFICULTY: C++ / Introduction | Easy
-PROGRAMMING LANGUAGE: C++14
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Standard Stream I/O Operations
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/cpp-input-and-output/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: C++14
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -72,27 +71,26 @@ Print the sum of the three numbers on a single line.
 The sum of the three numbers is 1+2+7=10 .
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Read three space-delimited integer tokens from standard input (cin), compute their cumulative sum, and emit the result to standard output (cout).
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Ingest 3 space-separated integers via standard input stream and stream their computed summation to standard output followed by a newline.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <iostream>
 
-using namespace std;
-
 int main() {
-    // Optimize standard I/O operations
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
 
-    int a, b, c;
-    if (cin >> a >> b >> c) {
-        cout << (a + b + c) << '\n';
+    int num1, num2, num3;
+    if (std::cin >> num1 >> num2 >> num3) {
+        int total = num1 + num2 + num3;
+        std::cout << total << '
+';
     }
 
     return 0;

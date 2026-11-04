@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #19: Pangrams
-MODULE: Unit 3: Programming Basics
-TOPIC: Strings (Alphabet Hashing & Completeness)
-URL: https://www.hackerrank.com/challenges/pangrams/problem
-DOMAIN / DIFFICULTY: Algorithms / Strings | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Alphabet Completeness & Set Hashing
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/pangrams/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -66,27 +65,23 @@ All of the letters of the alphabet are present in the string.
 The string lacks an `x`.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Convert the input sentence to lowercase and verify if the set of characters contains all 26 letters of the English alphabet.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Transform sentence into a set of lowercase characters and check whether all 26 ASCII English letters are present.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(L)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(L)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import string
 
-def main():
-    s = input().strip().lower()
+def check_pangram(sentence: str) -> str:
+    letters = set(sentence.lower())
     alphabet = set(string.ascii_lowercase)
-    char_set = set(s)
-
-    if alphabet.issubset(char_set):
-        print("pangram")
-    else:
-        print("not pangram")
+    return "pangram" if alphabet.issubset(letters) else "not pangram"
 
 if __name__ == '__main__':
-    main()
+    text = input().strip()
+    print(check_pangram(text))
 ================================================================================

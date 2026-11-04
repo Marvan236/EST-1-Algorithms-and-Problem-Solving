@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #10: For Loop
-MODULE: Unit 3: Programming Basics
-TOPIC: Loops & Range Iteration
-URL: https://www.hackerrank.com/challenges/c-tutorial-for-loop/problem
-DOMAIN / DIFFICULTY: C++ / Introduction | Easy
-PROGRAMMING LANGUAGE: C++14
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Bounded Loop Traversal & Parity Analysis
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/c-tutorial-for-loop/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: C++14
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -60,40 +59,39 @@ For each integer $n$ in the inclusive interval $[a, b]$:
     odd
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Iterate from a to b inclusive. If i is between 1 and 9, print the English word; if i > 9, print "even" or "odd" based on parity.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Iterate through integer interval [a, b]. Map values 1-9 to English words; for numbers above 9, evaluate and print whether they are even or odd.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(b - a + 1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(b - a + 1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
 
-    int a, b;
-    if (cin >> a >> b) {
-        const string words[] = {
+    int start_val, end_val;
+    if (std::cin >> start_val >> end_val) {
+        static const std::string digit_words[] = {
             "", "one", "two", "three", "four",
             "five", "six", "seven", "eight", "nine"
         };
 
-        for (int i = a; i <= b; ++i) {
-            if (i >= 1 && i <= 9) {
-                cout << words[i] << '\n';
+        for (int num = start_val; num <= end_val; ++num) {
+            if (num >= 1 && num <= 9) {
+                std::cout << digit_words[num] << '
+';
             } else {
-                cout << ((i % 2 == 0) ? "even" : "odd") << '\n';
+                std::cout << ((num % 2 == 0) ? "even" : "odd") << '
+';
             }
         }
     }
-
     return 0;
 }
 ================================================================================

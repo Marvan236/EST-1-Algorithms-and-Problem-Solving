@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #04: Java Stdin and Stdout I
-MODULE: Unit 3: Programming Basics
-TOPIC: Input / Output (Scanner)
-URL: https://www.hackerrank.com/challenges/java-stdin-and-stdout-1/problem
-DOMAIN / DIFFICULTY: Java / Introduction | Easy
-PROGRAMMING LANGUAGE: Java 8
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Stream Tokenization & Scanner
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/java-stdin-and-stdout-1/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Java 8
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -59,24 +58,25 @@ There are $3$ lines of input, and each line contains a single integer.
     125
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Utilize Java Scanner to parse three space/newline-separated integers from standard input and print each on a distinct line.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Read exactly three integer tokens from System.in utilizing a Scanner object and print each value on an independent line.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // Sequentially read and output 3 integers
-        for (int i = 0; i < 3; i++) {
+        // Process exactly 3 sequential integer inputs
+        for (int step = 0; step < 3; ++step) {
             if (scanner.hasNextInt()) {
-                System.out.println(scanner.nextInt());
+                int item = scanner.nextInt();
+                System.out.println(item);
             }
         }
         scanner.close();

@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #14: 2D Array - DS
-MODULE: Unit 3: Programming Basics
-TOPIC: 2-D Arrays (Hourglass Traversal)
-URL: https://www.hackerrank.com/challenges/2d-array/problem
-DOMAIN / DIFFICULTY: Data Structures / Arrays | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: 2D Matrix Hourglass Convolution
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/2d-array/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -175,30 +174,31 @@ The hourglass with the maximum sum ( 19 ) is:
     1 2 4
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Traverse all 16 possible hourglasses in a 6x6 2D matrix (top 3, center 1, bottom 3) and find the maximum sum.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Iterate over all 16 hourglass subgrids in a fixed 6x6 matrix (4 rows x 4 cols), evaluating the sum of 7 cells per hourglass to identify the global maximum.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
-def main():
-    grid = [list(map(int, input().split())) for _ in range(6)]
+STANDALONE IMPLEMENTATION:
+def max_hourglass():
+    matrix = [list(map(int, input().split())) for _ in range(6)]
+    highest_sum = -float('inf')
 
-    max_hourglass_sum = -float('inf')
     for r in range(4):
         for c in range(4):
-            top = sum(grid[r][c:c+3])
-            mid = grid[r+1][c+1]
-            bot = sum(grid[r+2][c:c+3])
-            current_sum = top + mid + bot
-            if current_sum > max_hourglass_sum:
-                max_hourglass_sum = current_sum
+            # Sum the top 3, center 1, and bottom 3 elements
+            top = matrix[r][c] + matrix[r][c+1] + matrix[r][c+2]
+            mid = matrix[r+1][c+1]
+            bot = matrix[r+2][c] + matrix[r+2][c+1] + matrix[r+2][c+2]
+            total = top + mid + bot
+            if total > highest_sum:
+                highest_sum = total
 
-    print(max_hourglass_sum)
+    print(highest_sum)
 
 if __name__ == '__main__':
-    main()
+    max_hourglass()
 ================================================================================

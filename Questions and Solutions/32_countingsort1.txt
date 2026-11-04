@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #32: Counting Sort 1
-MODULE: Unit 3: Programming Basics
-TOPIC: Bucketing (Frequency Counting)
-URL: https://www.hackerrank.com/challenges/countingsort1/problem
-DOMAIN / DIFFICULTY: Algorithms / Sorting | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Frequency Bucketing Histogram
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/countingsort1/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -79,22 +78,22 @@ $0 \le arr[i] \lt 100$
 Each of the resulting values result[i] represents the number of times i appeared in arr .
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Construct a 100-element frequency bucket array counting occurrences of each integer in [0, 99].
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Create a 100-bin histogram array and increment counts corresponding to each integer value in [0, 99].
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
-def main():
-    n = int(input().strip())
-    freq = [0] * 100
-    for val in map(int, input().split()):
-        freq[val] += 1
-    print(*freq)
+STANDALONE IMPLEMENTATION:
+def frequency_histogram():
+    _ = input()
+    histogram = [0] * 100
+    for number in map(int, input().split()):
+        histogram[number] += 1
+    print(*histogram)
 
 if __name__ == '__main__':
-    main()
+    frequency_histogram()
 ================================================================================

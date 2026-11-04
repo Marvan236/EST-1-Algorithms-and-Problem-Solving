@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #42: Power of large numbers
-MODULE: Units 4 & 5: Problems on Maths
-TOPIC: Modular Arithmetic (Euler's Totient / Fermat)
-URL: https://www.hackerrank.com/challenges/power-of-large-numbers/problem
-DOMAIN / DIFFICULTY: Mathematics / Number Theory | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Fermat's Little Theorem & Modular Exponentiation
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/power-of-large-numbers/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -60,40 +59,41 @@ Similarly 7^(4) modulo (10^(9) + 7) = 2401
 Similarly we can do for others.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Compute A^B mod M where M = 10^9 + 7 is prime. By Fermat's Little Theorem, A^B mod M = (A mod M)^(B mod (M - 1)) mod M.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Modulus M = 10^9 + 7 is prime. By Fermat's Little Theorem, A^B mod M = (A mod M)^(B mod (M - 1)) mod M. Reduce base mod M and exponent mod (M - 1) before computing pow().
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(|A| + |B| + log MOD)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(|A| + |B| + log MOD)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import sys
 
 MOD = 1000000007
 
-def str_mod(digits: str, modulus: int) -> int:
+def parse_digits_mod(num_str: str, modulus: int) -> int:
+    """Horner's method to reduce large decimal string modulo m."""
     val = 0
-    for ch in digits:
-        val = (val * 10 + ord(ch) - 48) % modulus
+    for digit in num_str:
+        val = (val * 10 + ord(digit) - 48) % modulus
     return val
 
-def main():
-    tokens = sys.stdin.read().split()
-    if not tokens:
+def large_powers():
+    inputs = sys.stdin.read().split()
+    if not inputs:
         return
-    t = int(tokens[0])
+    t = int(inputs[0])
     idx = 1
     out = []
     for _ in range(t):
-        a_str, b_str = tokens[idx], tokens[idx+1]
+        base_str, exp_str = inputs[idx], inputs[idx + 1]
         idx += 2
-        base = str_mod(a_str, MOD)
-        exp = str_mod(b_str, MOD - 1)
-        out.append(str(pow(base, exp, MOD)))
-    sys.stdout.write('\n'.join(out) + '\n')
+        base = parse_digits_mod(base_str, MOD)
+        exponent = parse_digits_mod(exp_str, MOD - 1)
+        out.append(str(pow(base, exponent, MOD)))
+    sys.stdout.write("\n".join(out) + "\n")
 
 if __name__ == '__main__':
-    main()
+    large_powers()
 ================================================================================

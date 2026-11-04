@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #24: Structs
-MODULE: Unit 3: Programming Basics
-TOPIC: Structures (Composite Records)
-URL: https://www.hackerrank.com/challenges/c-tutorial-struct/problem
-DOMAIN / DIFFICULTY: C++ / Introduction | Easy
-PROGRAMMING LANGUAGE: C++14
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: User-Defined Composite Records
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/c-tutorial-struct/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: C++14
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -58,36 +57,32 @@ Output will be of a single line, consisting of _age_, _first\_name_, _last\_name
     15 john carmack 10
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Declare a Student structure with age, first_name, last_name, and standard, reading values and printing formatted output.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Define a Student struct encapsulating age, first_name, last_name, and standard, reading members from cin and displaying them formatted.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <iostream>
 #include <string>
 
-using namespace std;
-
-struct Student {
+struct StudentRecord {
     int age;
-    string first_name;
-    string last_name;
+    std::string first_name;
+    std::string last_name;
     int standard;
 };
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    Student s;
-    if (cin >> s.age >> s.first_name >> s.last_name >> s.standard) {
-        cout << s.age << " " << s.first_name << " " << s.last_name << " " << s.standard << '\n';
+    StudentRecord st;
+    if (std::cin >> st.age >> st.first_name >> st.last_name >> st.standard) {
+        std::cout << st.age << " " << st.first_name << " "
+                  << st.last_name << " " << st.standard << '
+';
     }
-
     return 0;
 }
 ================================================================================

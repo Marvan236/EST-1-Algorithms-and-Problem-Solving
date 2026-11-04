@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #25: Small Triangles, Large Triangles
-MODULE: Unit 3: Programming Basics
-TOPIC: Structures (Sorting via Heron's Formula)
-URL: https://www.hackerrank.com/challenges/small-triangles-large-triangles/problem
-DOMAIN / DIFFICULTY: C / Structs and Enums | Medium
-PROGRAMMING LANGUAGE: C
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Geometric Struct Sorting via Heron's Formula
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/small-triangles-large-triangles/problem)
+DIFFICULTY: Medium | IMPLEMENTATION LANGUAGE: C
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -53,15 +52,15 @@ Print exactly $n$ lines. On each line print $3$ space-separated integers, the $a
 The area of the first triangle is 84 . The area of the second triangle is 30 . The area of the third triangle is 6 . So the sorted order is the reverse one.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Sort an array of triangle structs by area using Heron's formula. To avoid floating-point inaccuracies, compare 16 * area^2 = (a+b+c)(a+b-c)(a-b+c)(-a+b+c) with 64-bit integers.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Sort an array of triangle structs by area. To avoid floating-point errors from sqrt(), sort based on 16 * Area^2 = (a+b+c)(a+b-c)(a-b+c)(-a+b+c) using 64-bit integer arithmetic and qsort.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N log N)
-- Space Complexity: O(1) auxiliary
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N log N)
+- Auxiliary Space Complexity: O(1) auxiliary
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -71,36 +70,36 @@ typedef struct triangle {
     int c;
 } triangle;
 
-// Computes 16 * Area^2 to avoid precision issues with floating point and square root
-long long area_metric(triangle t) {
-    long long a = t.a, b = t.b, c = t.c;
+// Computes 16 * (Area)^2 to preserve integer precision
+long long compute_area_metric(const triangle *t) {
+    long long a = t->a, b = t->b, c = t->c;
     return (a + b + c) * (a + b - c) * (a - b + c) * (-a + b + c);
 }
 
-int compare_triangles(const void *p1, const void *p2) {
-    long long a1 = area_metric(*(const triangle *)p1);
-    long long a2 = area_metric(*(const triangle *)p2);
-    if (a1 < a2) return -1;
-    if (a1 > a2) return 1;
+int triangle_comparator(const void *elem1, const void *elem2) {
+    long long area1 = compute_area_metric((const triangle *)elem1);
+    long long area2 = compute_area_metric((const triangle *)elem2);
+    if (area1 < area2) return -1;
+    if (area1 > area2) return 1;
     return 0;
 }
 
 void sort_by_area(triangle* tr, int n) {
-    qsort(tr, n, sizeof(triangle), compare_triangles);
+    qsort(tr, n, sizeof(triangle), triangle_comparator);
 }
 
 int main() {
     int n;
     if (scanf("%d", &n) != 1) return 0;
-    triangle *tr = malloc(n * sizeof(triangle));
-    for (int i = 0; i < n; i++) {
-        scanf("%d%d%d", &tr[i].a, &tr[i].b, &tr[i].c);
+    triangle *arr = (triangle *)malloc(n * sizeof(triangle));
+    for (int i = 0; i < n; ++i) {
+        scanf("%d %d %d", &arr[i].a, &arr[i].b, &arr[i].c);
     }
-    sort_by_area(tr, n);
-    for (int i = 0; i < n; i++) {
-        printf("%d %d %d\n", tr[i].a, tr[i].b, tr[i].c);
+    sort_by_area(arr, n);
+    for (int i = 0; i < n; ++i) {
+        printf("%d %d %d\n", arr[i].a, arr[i].b, arr[i].c);
     }
-    free(tr);
+    free(arr);
     return 0;
 }
 ================================================================================

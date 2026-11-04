@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #26: Dynamic Array
-MODULE: Unit 3: Programming Basics
-TOPIC: Dynamic Arrays (Dynamic Sequence Queries)
-URL: https://www.hackerrank.com/challenges/dynamic-array/problem
-DOMAIN / DIFFICULTY: Data Structures / Arrays | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Dynamic Array Manipulation & Bitwise Indexing
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/dynamic-array/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -104,44 +103,44 @@ arr[1] = [7]
 Return your answer array [7, 3]. The code stub prints its elements on separate lines.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Simulate dynamic 2D array queries where sequences are indexed by (x ^ last_answer) % n, appending or reading elements and maintaining last_answer.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Simulate dynamic 2D sequence arrays. Compute sequence index via ((x ^ last_answer) % n) and process append or lookup operations accordingly.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(Q)
-- Space Complexity: O(N + Q)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(Q)
+- Auxiliary Space Complexity: O(N + Q)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import sys
 
-def main():
-    input_data = iter(sys.stdin.buffer.read().split())
+def dynamic_array():
+    tokens = iter(sys.stdin.buffer.read().split())
     try:
-        n = int(next(input_data))
-        q = int(next(input_data))
+        n = int(next(tokens))
+        q = int(next(tokens))
     except StopIteration:
         return
 
     sequences = [[] for _ in range(n)]
     last_answer = 0
-    results = []
+    output = []
 
     for _ in range(q):
-        query_type = int(next(input_data))
-        x = int(next(input_data))
-        y = int(next(input_data))
+        cmd = int(next(tokens))
+        x = int(next(tokens))
+        y = int(next(tokens))
+        seq_idx = (x ^ last_answer) % n
 
-        idx = (x ^ last_answer) % n
+        if cmd == 1:
+            sequences[seq_idx].append(y)
+        elif cmd == 2:
+            target_list = sequences[seq_idx]
+            last_answer = target_list[y % len(target_list)]
+            output.append(str(last_answer))
 
-        if query_type == 1:
-            sequences[idx].append(y)
-        elif query_type == 2:
-            last_answer = sequences[idx][y % len(sequences[idx])]
-            results.append(str(last_answer))
-
-    sys.stdout.write('\n'.join(results) + '\n')
+    sys.stdout.write("\n".join(output) + "\n")
 
 if __name__ == '__main__':
-    main()
+    dynamic_array()
 ================================================================================

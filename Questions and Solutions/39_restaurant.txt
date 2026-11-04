@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #39: Restaurant
-MODULE: Units 4 & 5: Problems on Maths
-TOPIC: GCD (Greatest Common Divisor & Area Tiling)
-URL: https://www.hackerrank.com/challenges/restaurant/problem
-DOMAIN / DIFFICULTY: Mathematics / Fundamentals | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Greatest Common Divisor (GCD) & Area Tiling
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/restaurant/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -47,32 +46,32 @@ The 1st testcase has a bread whose original dimensions are 2×2 , the bread is u
 The 2nd testcase has a bread of size 6×9 . We can cut it into 54 squares of size 1×1 , 6 of size 3×3 . For other sizes we will have leftovers. Hence, the number of squares of maximum size that can be cut is 6.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-To partition an L x B rectangle into the minimal number of identical squares, each square's side length must be gcd(L, B). Minimum count is (L // gcd) * (B // gcd).
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+To divide an L x B rectangle into minimal equal squares without waste, the square side must equal gcd(L, B). Minimum squares = (L // gcd) * (B // gcd).
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(log(min(L, B)))
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(log(min(L, B)))
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 from math import gcd
 import sys
 
-def main():
+def solve_tiling():
     data = list(map(int, sys.stdin.read().split()))
     if not data:
         return
     t = data[0]
-    idx = 1
     out = []
+    idx = 1
     for _ in range(t):
-        l, b = data[idx], data[idx+1]
+        length, breadth = data[idx], data[idx + 1]
         idx += 2
-        g = gcd(l, b)
-        out.append(str((l // g) * (b // g)))
-    sys.stdout.write('\n'.join(out) + '\n')
+        side = gcd(length, breadth)
+        out.append(str((length // side) * (breadth // side)))
+    sys.stdout.write("\n".join(out) + "\n")
 
 if __name__ == '__main__':
-    main()
+    solve_tiling()
 ================================================================================

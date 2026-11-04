@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #40: Between Two Sets
-MODULE: Units 4 & 5: Problems on Maths
-TOPIC: GCD & LCM (Factors and Multiples)
-URL: https://www.hackerrank.com/challenges/between-two-sets/problem
-DOMAIN / DIFFICULTY: Algorithms / Implementation | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Common Multiples & Divisors (LCM / GCD)
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/between-two-sets/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -74,45 +73,45 @@ The third line contains $m$ distinct space-separated integers $b[j]$ where $0 \l
 4, 8 and 16 are the only three numbers for which each element of a is a factor and each is a factor of all elements of b.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Candidate numbers must be multiples of lcm(A) and factors of gcd(B). Iterate through multiples of lcm(A) up to gcd(B) and count valid candidates.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Candidate integers must be divisible by all elements in A (a multiple of lcm(A)) and divide all elements in B (a divisor of gcd(B)). Iterate through multiples of lcm(A) up to gcd(B).
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N log(max A) + M log(max B) + (gcd(B)/lcm(A)))
-- Space Complexity: O(1) auxiliary
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N log(max A) + M log(max B) + (gcd(B)/lcm(A)))
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 from math import gcd
 
-def lcm(x, y):
+def compute_lcm(x: int, y: int) -> int:
     return (x * y) // gcd(x, y)
 
-def main():
+def count_common_factors():
     n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
+    arr_a = list(map(int, input().split()))
+    arr_b = list(map(int, input().split()))
 
-    # LCM of all elements in A
-    lcm_a = a[0]
-    for val in a[1:]:
-        lcm_a = lcm(lcm_a, val)
+    # LCM across entire first array
+    lcm_val = arr_a[0]
+    for val in arr_a[1:]:
+        lcm_val = compute_lcm(lcm_val, val)
 
-    # GCD of all elements in B
-    gcd_b = b[0]
-    for val in b[1:]:
-        gcd_b = gcd(gcd_b, val)
+    # GCD across entire second array
+    gcd_val = arr_b[0]
+    for val in arr_b[1:]:
+        gcd_val = gcd(gcd_val, val)
 
-    # Count multiples of lcm_a that divide gcd_b
-    count = 0
-    multiple = lcm_a
-    while multiple <= gcd_b:
-        if gcd_b % multiple == 0:
-            count += 1
-        multiple += lcm_a
+    # Count valid multiples of lcm_val dividing gcd_val
+    valid_count = 0
+    cur_multiple = lcm_val
+    while cur_multiple <= gcd_val:
+        if gcd_val % cur_multiple == 0:
+            valid_count += 1
+        cur_multiple += lcm_val
 
-    print(count)
+    print(valid_count)
 
 if __name__ == '__main__':
-    main()
+    count_common_factors()
 ================================================================================

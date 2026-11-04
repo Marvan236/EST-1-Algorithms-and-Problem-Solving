@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #44: Matrix Tracing
-MODULE: Units 4 & 5: Problems on Maths
-TOPIC: Permutations & Combinations (Grid Path Combinatorics)
-URL: https://www.hackerrank.com/challenges/matrix-tracing/problem
-DOMAIN / DIFFICULTY: Mathematics / Combinatorics | Medium
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Grid Path Combinatorics & Modular Inverse
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/matrix-tracing/problem)
+DIFFICULTY: Medium | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -69,49 +68,49 @@ Hence the answer is 3.
 Time limit for this challenge is given [here](https://www.hackerrank.com/environment)
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Any path from top-left to bottom-right of an m x n grid consists of (m-1) down steps and (n-1) right steps. Total paths is C((m-1)+(n-1), m-1) mod (10^9 + 7). Precompute factorials and modular inverse factorials.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Lattice paths from (1, 1) to (m, n) consist of (m-1) down and (n-1) right steps. Total paths is C((m-1) + (n-1), m-1) mod (10^9 + 7). Precompute factorials and modular inverse factorials.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(M_max + N_max) precomputation, O(1) per query
-- Space Complexity: O(M_max + N_max)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(M_max + N_max) precomputation, O(1) per query
+- Auxiliary Space Complexity: O(M_max + N_max)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import sys
 from array import array
 
 MOD = 1000000007
 
-def main():
-    data = list(map(int, sys.stdin.buffer.read().split()))
-    if not data:
+def solve_grid_paths():
+    tokens = list(map(int, sys.stdin.buffer.read().split()))
+    if not tokens:
         return
-    t = data[0]
-    pairs = list(zip(data[1::2], data[2::2]))
+    t = tokens[0]
+    pairs = list(zip(tokens[1::2], tokens[2::2]))
+    max_steps = max(m + n - 2 for m, n in pairs)
 
-    # Determine maximum dimension for factorial table
-    max_k = max(m + n - 2 for m, n in pairs)
-
-    fact = array('q', [1]) * (max_k + 1)
-    for i in range(1, max_k + 1):
+    # Precompute factorials modulo 10^9 + 7
+    fact = array('q', [1]) * (max_steps + 1)
+    for i in range(1, max_steps + 1):
         fact[i] = (fact[i - 1] * i) % MOD
 
-    inv_fact = array('q', [1]) * (max_k + 1)
-    inv_fact[max_k] = pow(fact[max_k], MOD - 2, MOD)
-    for i in range(max_k - 1, -1, -1):
+    # Precompute inverse factorials using Fermat's Little Theorem
+    inv_fact = array('q', [1]) * (max_steps + 1)
+    inv_fact[max_steps] = pow(fact[max_steps], MOD - 2, MOD)
+    for i in range(max_steps - 1, -1, -1):
         inv_fact[i] = (inv_fact[i + 1] * (i + 1)) % MOD
 
-    out = []
+    results = []
     for m, n in pairs:
-        total_steps = m + n - 2
-        down_steps = m - 1
-        ans = (fact[total_steps] * inv_fact[down_steps]) % MOD
-        ans = (ans * inv_fact[total_steps - down_steps]) % MOD
-        out.append(str(ans))
+        total = m + n - 2
+        down = m - 1
+        comb = (fact[total] * inv_fact[down]) % MOD
+        comb = (comb * inv_fact[total - down]) % MOD
+        results.append(str(comb))
 
-    sys.stdout.write('\n'.join(out) + '\n')
+    sys.stdout.write("\n".join(results) + "\n")
 
 if __name__ == '__main__':
-    main()
+    solve_grid_paths()
 ================================================================================

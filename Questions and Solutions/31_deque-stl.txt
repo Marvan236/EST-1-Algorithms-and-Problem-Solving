@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #31: Deque-STL
-MODULE: Unit 3: Programming Basics
-TOPIC: Sliding Window (Monotonic Deque)
-URL: https://www.hackerrank.com/challenges/deque-stl/problem
-DOMAIN / DIFFICULTY: C++ / STL | Medium
-PROGRAMMING LANGUAGE: C++14
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Monotonic Double-Ended Queue (Sliding Window Maximum)
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/deque-stl/problem)
+DIFFICULTY: Medium | IMPLEMENTATION LANGUAGE: C++14
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -86,59 +85,58 @@ For the first case, the contiguous subarrays of size 2 are {3,4},{4,6},{6,3} and
 For the second case,the contiguous subarrays of size 4 are {3,4,5,8},{4,5,8,1},{5,8,1,4} and {8,1,4,10}. The 4 maximum element of subarray of size 4 are: 8 8 8 10.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Maintain a monotonic descending double-ended queue storing element indices. For each sliding window of size K, the front of the deque gives the maximum in O(1) amortized time.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Maintain a monotonic decreasing deque storing indices of prospective window maximums. Expire indices older than i - k and remove smaller elements before pushing, achieving linear time.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N)
-- Space Complexity: O(K)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(K)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <iostream>
 #include <vector>
 #include <deque>
 
-using namespace std;
-
-void printKMax(int arr[], int n, int k) {
-    deque<int> dq; // Stores indices of useful elements
+void solve_window_max(const int arr[], int n, int k) {
+    std::deque<int> dq; // Monotonically decreasing indices
 
     for (int i = 0; i < n; ++i) {
-        // Remove indices outside the current window
+        // Discard elements falling outside the active window [i - k + 1, i]
         if (!dq.empty() && dq.front() <= i - k) {
             dq.pop_front();
         }
 
-        // Maintain monotonic decreasing order in deque
+        // Maintain monotonic property by eliminating smaller elements from the back
         while (!dq.empty() && arr[dq.back()] <= arr[i]) {
             dq.pop_back();
         }
 
         dq.push_back(i);
 
-        // Window reaches full size k
+        // When window reaches size k, front holds the maximum
         if (i >= k - 1) {
-            cout << arr[dq.front()] << (i == n - 1 ? "" : " ");
+            std::cout << arr[dq.front()] << (i == n - 1 ? "" : " ");
         }
     }
-    cout << '\n';
+    std::cout << '
+';
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
 
-    int t;
-    if (cin >> t) {
-        while (t--) {
+    int test_cases;
+    if (std::cin >> test_cases) {
+        while (test_cases--) {
             int n, k;
-            cin >> n >> k;
-            vector<int> arr(n);
+            std::cin >> n >> k;
+            std::vector<int> numbers(n);
             for (int i = 0; i < n; ++i) {
-                cin >> arr[i];
+                std::cin >> numbers[i];
             }
-            printKMax(arr.data(), n, k);
+            solve_window_max(numbers.data(), n, k);
         }
     }
     return 0;

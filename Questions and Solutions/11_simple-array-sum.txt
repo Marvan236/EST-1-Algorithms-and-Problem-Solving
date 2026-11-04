@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #11: Simple Array Sum
-MODULE: Unit 3: Programming Basics
-TOPIC: Arrays (Linear Summation)
-URL: https://www.hackerrank.com/challenges/simple-array-sum/problem
-DOMAIN / DIFFICULTY: Algorithms / Warmup | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Linear Accumulation & List Traversal
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/simple-array-sum/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -54,20 +53,20 @@ $0 \lt n, ar[i] \le 1000$
 Print the sum of the array's elements: 1+2+3+4+10+11=31 .
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Read an array of size N and compute the arithmetic sum of its elements using linear traversal.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Accumulate the sum of N integers in a single pass using iterator consumption.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N)
-- Space Complexity: O(1) auxiliary
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(1) auxiliary
 
-SOURCE CODE:
-def main():
-    n = int(input().strip())
-    arr = map(int, input().split())
-    print(sum(arr))
+STANDALONE IMPLEMENTATION:
+def calculate_total():
+    _ = input() # Read size parameter
+    elements = map(int, input().split())
+    print(sum(elements))
 
 if __name__ == '__main__':
-    main()
+    calculate_total()
 ================================================================================

@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #46: Running Time of Algorithms
-MODULE: Unit 3: Programming Basics
-TOPIC: Time & Space Complexity (Insertion Sort Inversions)
-URL: https://www.hackerrank.com/challenges/runningtime/problem
-DOMAIN / DIFFICULTY: Algorithms / Sorting | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Insertion Sort Shifts & Inversion Count
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/runningtime/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -88,31 +87,31 @@ $-10000 \le a[i] \le 10000, \text{ where } i \in \{0..(n-1)\}$
     Total                     4
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Count the total number of shifts executed by Insertion Sort, which corresponds to the number of inversion pairs in the array.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Simulate insertion sort on the array while tracking the cumulative number of element shifts, which exactly measures the total inversions.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N^2)
-- Space Complexity: O(1) auxiliary
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N^2)
+- Auxiliary Space Complexity: O(1) auxiliary
 
-SOURCE CODE:
-def main():
+STANDALONE IMPLEMENTATION:
+def insertion_sort_shifts():
     n = int(input().strip())
     arr = list(map(int, input().split()))
 
-    shift_count = 0
+    total_shifts = 0
     for i in range(1, n):
         key = arr[i]
         j = i - 1
         while j >= 0 and arr[j] > key:
             arr[j + 1] = arr[j]
-            shift_count += 1
+            total_shifts += 1
             j -= 1
         arr[j + 1] = key
 
-    print(shift_count)
+    print(total_shifts)
 
 if __name__ == '__main__':
-    main()
+    insertion_sort_shifts()
 ================================================================================

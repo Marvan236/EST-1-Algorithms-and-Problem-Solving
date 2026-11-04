@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #13: Plus Minus
-MODULE: Unit 3: Programming Basics
-TOPIC: Arrays (Element Classification & Precision)
-URL: https://www.hackerrank.com/challenges/plus-minus/problem
-DOMAIN / DIFFICULTY: Algorithms / Warmup | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Array Categorization & Decimal Formatting
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/plus-minus/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -66,27 +65,27 @@ There are 3 positive numbers, 2 negative numbers, and 1 zero in the array.
 The proportions of occurrence are positive: 3/6=0.500000 , negative: 2/6=0.333333 and zeros: 1/6=0.166667 .
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Count positive, negative, and zero elements in an array of size N, printing their proportions formatted to 6 decimal places.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Count positive, negative, and zero frequencies across an array of length N and output the fraction of each category formatted to 6 decimal places.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N)
-- Space Complexity: O(1) auxiliary
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(1) auxiliary
 
-SOURCE CODE:
-def main():
+STANDALONE IMPLEMENTATION:
+def compute_proportions():
     n = int(input().strip())
-    arr = list(map(int, input().split()))
+    vals = list(map(int, input().split()))
 
-    pos_count = sum(1 for x in arr if x > 0)
-    neg_count = sum(1 for x in arr if x < 0)
-    zero_count = sum(1 for x in arr if x == 0)
+    positives = sum(1 for x in vals if x > 0)
+    negatives = sum(1 for x in vals if x < 0)
+    zeros = sum(1 for x in vals if x == 0)
 
-    print(f"{pos_count / n:.6f}")
-    print(f"{neg_count / n:.6f}")
-    print(f"{zero_count / n:.6f}")
+    print(f"{positives / n:.6f}")
+    print(f"{negatives / n:.6f}")
+    print(f"{zeros / n:.6f}")
 
 if __name__ == '__main__':
-    main()
+    compute_proportions()
 ================================================================================

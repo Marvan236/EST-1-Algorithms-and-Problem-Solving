@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #17: Super Reduced String
-MODULE: Unit 3: Programming Basics
-TOPIC: Strings (Adjacent Duplicate Elimination)
-URL: https://www.hackerrank.com/challenges/reduced-string/problem
-DOMAIN / DIFFICULTY: Algorithms / Strings | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Stack-Based Duplicate Cancellation
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/reduced-string/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -102,28 +101,27 @@ Perform the following sequence of operations to get the final string:
     baab → bb → Empty String
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Use a stack to greedily eliminate pairs of adjacent matching characters. If the stack is empty at the end, output "Empty String".
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Maintain a character stack. For each character, if it matches the current top of the stack, pop the stack to eliminate the adjacent pair; otherwise push it.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(L)
-- Space Complexity: O(L)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(L)
+- Auxiliary Space Complexity: O(L)
 
-SOURCE CODE:
-def main():
-    s = input().strip()
-    stack = []
-
-    for char in s:
-        if stack and stack[-1] == char:
-            stack.pop()
+STANDALONE IMPLEMENTATION:
+def reduce_string(text: str) -> str:
+    char_stack = []
+    for ch in text:
+        if char_stack and char_stack[-1] == ch:
+            char_stack.pop()
         else:
-            stack.append(char)
-
-    result = "".join(stack)
-    print(result if result else "Empty String")
+            char_stack.append(ch)
+    
+    result = "".join(char_stack)
+    return result if result else "Empty String"
 
 if __name__ == '__main__':
-    main()
+    s = input().strip()
+    print(reduce_string(s))
 ================================================================================

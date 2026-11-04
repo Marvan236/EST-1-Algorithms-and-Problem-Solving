@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #23: Write a function
-MODULE: Unit 3: Programming Basics
-TOPIC: Functions (Leap Year Evaluation Logic)
-URL: https://www.hackerrank.com/challenges/write-a-function/problem
-DOMAIN / DIFFICULTY: Python / Introduction | Medium
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Calendar Logic & Leap Year Rules
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/write-a-function/problem)
+DIFFICULTY: Medium | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -56,20 +55,24 @@ The function must return a Boolean value (True/False).  Output is handled by the
 1990 is not a multiple of 4 hence it's not a leap year.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Implement a leap year function: a year is a leap year if divisible by 400, or divisible by 4 and not divisible by 100.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Apply Gregorian leap year conditions: divisible by 4 and not 100, except if divisible by 400.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 def is_leap(year: int) -> bool:
-    """Return True if year is a leap year, False otherwise."""
-    return (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0)
+    """Evaluates if the specified Gregorian calendar year is a leap year."""
+    if year % 400 == 0:
+        return True
+    if year % 100 == 0:
+        return False
+    return year % 4 == 0
 
 if __name__ == '__main__':
-    year = int(input().strip())
-    print(is_leap(year))
+    y = int(input().strip())
+    print(is_leap(y))
 ================================================================================

@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #27: Variable Sized Arrays
-MODULE: Unit 3: Programming Basics
-TOPIC: Dynamic Arrays (Jagged 2D Vectors)
-URL: https://www.hackerrank.com/challenges/variable-sized-arrays/problem
-DOMAIN / DIFFICULTY: C++ / Introduction | Easy
-PROGRAMMING LANGUAGE: C++14
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Jagged Dynamic 2D Vectors
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/variable-sized-arrays/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: C++14
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -68,41 +67,40 @@ We perform the following q=2 queries:
   2. Find the array located at index i=1 , which corresponds to a[1]=[1,2,8,9,3] . We must print the value at index j=3 of this array which, as you can see, is 9 .
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Store variable-length arrays inside a vector of vectors (std::vector<vector<int>>), servicing random-access index queries in O(1).
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Create a dynamic vector of integer vectors std::vector<std::vector<int>> with variable column sizes, servicing random access queries in O(1).
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(Total Elements + Q)
-- Space Complexity: O(Total Elements)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(Total Elements + Q)
+- Auxiliary Space Complexity: O(Total Elements)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
 
-    int n, q;
-    if (!(cin >> n >> q)) return 0;
+    int num_arrays, num_queries;
+    if (!(std::cin >> num_arrays >> num_queries)) return 0;
 
-    vector<vector<int>> arr(n);
-    for (int i = 0; i < n; ++i) {
-        int k;
-        cin >> k;
-        arr[i].resize(k);
-        for (int j = 0; j < k; ++j) {
-            cin >> arr[i][j];
+    std::vector<std::vector<int>> table(num_arrays);
+    for (int i = 0; i < num_arrays; ++i) {
+        int length;
+        std::cin >> length;
+        table[i].resize(length);
+        for (int j = 0; j < length; ++j) {
+            std::cin >> table[i][j];
         }
     }
 
-    for (int query = 0; query < q; ++query) {
-        int i, j;
-        cin >> i >> j;
-        cout << arr[i][j] << '\n';
+    for (int q = 0; q < num_queries; ++q) {
+        int row, col;
+        std::cin >> row >> col;
+        std::cout << table[row][col] << '
+';
     }
 
     return 0;

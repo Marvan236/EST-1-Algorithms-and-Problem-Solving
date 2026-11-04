@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #43: Handshake
-MODULE: Units 4 & 5: Problems on Maths
-TOPIC: Permutations & Combinations (Pairwise Combinations)
-URL: https://www.hackerrank.com/challenges/handshake/problem
-DOMAIN / DIFFICULTY: Mathematics / Combinatorics | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Pairwise Graph Combinatorics C(N, 2)
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/handshake/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -56,27 +55,24 @@ Case 1 : The lonely board member shakes no hands, hence 0.
 Case 2 : There are 2 board members, so 1 handshake takes place.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-For N attendees where each pair shakes hands exactly once, the total number of handshakes is nC2 = N * (N - 1) // 2.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+In a complete graph where each pair of N people shakes hands once, total handshakes equals C(N, 2) = N * (N - 1) // 2.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1) per query
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import sys
 
-def main():
-    lines = sys.stdin.read().split()
-    if not lines:
+def calculate_handshakes():
+    tokens = sys.stdin.read().split()
+    if not tokens:
         return
-    out = []
-    for token in lines[1:]:
-        n = int(token)
-        out.append(str(n * (n - 1) // 2))
-    sys.stdout.write('\n'.join(out) + '\n')
+    out = [str(int(n) * (int(n) - 1) // 2) for n in tokens[1:]]
+    sys.stdout.write("\n".join(out) + "\n")
 
 if __name__ == '__main__':
-    main()
+    calculate_handshakes()
 ================================================================================

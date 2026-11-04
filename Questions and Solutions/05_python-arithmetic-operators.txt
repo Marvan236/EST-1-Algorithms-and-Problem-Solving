@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #05: Arithmetic Operators
-MODULE: Unit 3: Programming Basics
-TOPIC: Arithmetic Operators
-URL: https://www.hackerrank.com/challenges/python-arithmetic-operators/problem
-DOMAIN / DIFFICULTY: Python / Introduction | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Basic Numerical Operations
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/python-arithmetic-operators/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -74,25 +73,26 @@ Print the three lines as explained above.
 3∗2⟹6
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Read two integers a and b, computing their sum, difference, and product on consecutive lines.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Read two integer operands from standard input, computing and printing their sum, difference, and product respectively.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1)
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
-def main():
-    # Read two integers from input
-    a = int(input().strip())
-    b = int(input().strip())
+STANDALONE IMPLEMENTATION:
+import sys
 
-    # Compute and output sum, difference, and product
-    print(a + b)
-    print(a - b)
-    print(a * b)
+def execute_operations():
+    input_lines = sys.stdin.read().split()
+    if len(input_lines) >= 2:
+        val_a = int(input_lines[0])
+        val_b = int(input_lines[1])
+        print(val_a + val_b)
+        print(val_a - val_b)
+        print(val_a * val_b)
 
 if __name__ == '__main__':
-    main()
+    execute_operations()
 ================================================================================

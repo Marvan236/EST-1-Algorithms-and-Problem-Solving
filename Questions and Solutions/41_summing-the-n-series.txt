@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #41: Summing the N series
-MODULE: Units 4 & 5: Problems on Maths
-TOPIC: Modular Arithmetic (Telescoping Series)
-URL: https://www.hackerrank.com/challenges/summing-the-n-series/problem
-DOMAIN / DIFFICULTY: Mathematics / Number Theory | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Units 4 & 5: Problems on Maths
+TOPIC: Telescoping Series & Modular Arithmetic
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/summing-the-n-series/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -67,29 +66,29 @@ Case 1: We have 4=1+3
 Case 2: We have 1=1
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Each term is T_n = n^2 - (n-1)^2 = 2n - 1. The sum of the first N terms is S_N = sum(2i - 1) = N^2. Result is (N^2) % (10^9 + 7).
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Term T_i = i^2 - (i - 1)^2 = 2i - 1. Sum of first N odd integers is S_N = sum(2i - 1) = N^2. Result is (N^2) % (10^9 + 7).
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(1) per query
-- Space Complexity: O(1)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(1)
+- Auxiliary Space Complexity: O(1)
 
-SOURCE CODE:
+STANDALONE IMPLEMENTATION:
 import sys
 
-MOD = 1000000007
+MODULO = 1000000007
 
-def main():
-    lines = sys.stdin.read().split()
-    if not lines:
+def sum_series():
+    tokens = sys.stdin.read().split()
+    if not tokens:
         return
-    out = []
-    for val in lines[1:]:
-        n = int(val)
-        out.append(str((n * n) % MOD))
-    sys.stdout.write('\n'.join(out) + '\n')
+    results = []
+    for token in tokens[1:]:
+        n = int(token)
+        results.append(str((n * n) % MODULO))
+    sys.stdout.write("\n".join(results) + "\n")
 
 if __name__ == '__main__':
-    main()
+    sum_series()
 ================================================================================

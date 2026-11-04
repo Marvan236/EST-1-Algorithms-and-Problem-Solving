@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #15: Diagonal Difference
-MODULE: Unit 3: Programming Basics
-TOPIC: 2-D Arrays (Matrix Diagonals)
-URL: https://www.hackerrank.com/challenges/diagonal-difference/problem
-DOMAIN / DIFFICULTY: Algorithms / Warmup | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Square Matrix Diagonal Traversal
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/diagonal-difference/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -86,28 +85,22 @@ Difference: ∣4−19∣=15
 **Note:** |x| is the [absolute value](https://www.mathsisfun.com/numbers/absolute-value.html) of x.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Compute primary diagonal sum (i == j) and secondary diagonal sum (j == n - 1 - i) across an n x n square matrix in a single pass, returning |primary - secondary|.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Traverse an n x n square matrix row by row, simultaneously accumulating the primary diagonal (col i) and secondary diagonal (col n - 1 - i), then outputting the absolute difference.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N)
-- Space Complexity: O(1) auxiliary
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N)
+- Auxiliary Space Complexity: O(1) auxiliary
 
-SOURCE CODE:
-def main():
+STANDALONE IMPLEMENTATION:
+def calculate_diagonal_diff():
     n = int(input().strip())
     grid = [list(map(int, input().split())) for _ in range(n)]
 
-    primary_sum = 0
-    secondary_sum = 0
-
-    for i in range(n):
-        primary_sum += grid[i][i]
-        secondary_sum += grid[i][n - 1 - i]
-
-    print(abs(primary_sum - secondary_sum))
+    diff = sum(grid[i][i] - grid[i][n - 1 - i] for i in range(n))
+    print(abs(diff))
 
 if __name__ == '__main__':
-    main()
+    calculate_diagonal_diff()
 ================================================================================

@@ -1,13 +1,12 @@
 ================================================================================
-EST-1 PROBLEM SOLVING & ALGORITHM PORTFOLIO
+ACADEMIC COURSEWORK: EST-1 ALGORITHMS & PROBLEM SOLVING
 STUDENT: Mohamed Marvan yacub hasan
 USN: 26MCAR0036
 QUESTION #33: Counting Sort 2
-MODULE: Unit 3: Programming Basics
-TOPIC: Bucketing (Full Counting Sort)
-URL: https://www.hackerrank.com/challenges/countingsort2/problem
-DOMAIN / DIFFICULTY: Algorithms / Sorting | Easy
-PROGRAMMING LANGUAGE: Python 3
+SYLLABUS MODULE: Unit 3: Programming Basics
+TOPIC: Non-Comparative Linear Sorting
+PLATFORM SOURCE: HackerRank (https://www.hackerrank.com/challenges/countingsort2/problem)
+DIFFICULTY: Easy | IMPLEMENTATION LANGUAGE: Python 3
 ================================================================================
 
 --- PROBLEM DESCRIPTION ---
@@ -72,24 +71,24 @@ Print the sorted list as a single line of space-separated integers.
 Once our counting array has been filled, loop from index 0 to the end, printing each i value arr[i] times.
 
 ================================================================================
---- SOLUTION & ANALYSIS ---
-APPROACH / STRATEGY:
-Populate frequency buckets for all values in [0, 99] and emit each value repeated according to its frequency count.
+--- SOLUTION & ALGORITHMIC ANALYSIS ---
+ALGORITHMIC STRATEGY:
+Tally occurrences of values in range [0, 99] using a frequency array, and output the reconstructed sorted list by unpacking each bucket.
 
-COMPLEXITY ANALYSIS:
-- Time Complexity:  O(N + K)
-- Space Complexity: O(K)
+COMPLEXITY GUARANTEES:
+- Worst-Case Time Complexity:  O(N + K)
+- Auxiliary Space Complexity: O(K)
 
-SOURCE CODE:
-def main():
-    n = int(input().strip())
-    freq = [0] * 100
+STANDALONE IMPLEMENTATION:
+def counting_sort():
+    _ = input()
+    frequency = [0] * 100
     for val in map(int, input().split()):
-        freq[val] += 1
+        frequency[val] += 1
 
-    sorted_arr = [val for val, count in enumerate(freq) for _ in range(count)]
-    print(*sorted_arr)
+    sorted_sequence = [val for val, cnt in enumerate(frequency) for _ in range(cnt)]
+    print(*sorted_sequence)
 
 if __name__ == '__main__':
-    main()
+    counting_sort()
 ================================================================================
